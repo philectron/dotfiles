@@ -161,11 +161,6 @@ nnoremap <Leader>i :SyntasticInfo<CR>
 nnoremap <Leader>m :SyntasticToggleMode<CR>
 
 "=======================================
-" tagbar
-"=======================================
-nnoremap <Leader>t :TagbarToggle<CR>
-
-"=======================================
 " ctrlp
 "=======================================
 set runtimepath^=~/.vim/bundle/ctrlp.vim
