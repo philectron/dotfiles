@@ -1,0 +1,35 @@
+# Make tab autocomplete case-insentive
+set completion-ignore-case on
+
+# List all matches in auto-completion
+set show-all-if-ambiguous on
+
+# Do not autocomplete hidden files unless the pattern explicitly begins with a dot
+set match-hidden-files off
+
+# Show all autocomplete results at once
+set page-completions off
+
+# Show extra file information when completing like ls -F
+set visible-stats on
+
+# Allow UTF-8 input and output, instead of like $'\0123\0456'
+set input-meta on
+set output-meta on
+set convert-meta off
+
+# Add a trailing slash when autocompleting symlinks to directories
+set mark-symlinked-directories on
+
+# Readline does not insert characters from the completion that match characters after point in the word being completed, so portions of the word following the cursor are not duplicated. For example, attempting completion when the cursor is after the ‘e’ in ‘Makefile’ will result in ‘Makefile’ rather than ‘Makefilefile’
+set skip-completed-text on
+
+# Flip through autocompletion matches with Shift-Tab
+"\e[Z": menu-complete
+
+# Use the text that has already been typed as the prefix for searching through commands history (Up and Down arrow button)
+"\e[B": history-search-forward
+"\e[A": history-search-backward
+# Ensure left and right arrow work as normal
+"\e[C": forward-char
+"\e[D": backward-char

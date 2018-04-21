@@ -1,0 +1,7 @@
+host flip
+    hostname 128.193.36.41
+    user luuph
+
+host hermes
+    hostname 10.0.0.6
+    user phi
