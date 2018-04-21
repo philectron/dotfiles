@@ -1,0 +1,41 @@
+[user]
+    email = philectron@users.noreply.github.com
+    name = Phi Luu
+
+[github]
+    user = philectron
+
+[alias]
+    update-submodules = submodule update --init --recursive
+    upgrade-submodules = submodule update --init --remote
+
+[color]
+    ui = auto
+
+[color "grep"]
+    match = cyan bold
+    selected = blue
+    context = normal
+    filename = magenta
+    linenumber = green
+    separator = yellow
+    function = blue
+
+[pretty]
+    line = "%C(auto)%h%d %s %C(yellow)by %C(blue)%an %C(green)%ar"
+    compact = "%C(auto)%h %s %C(green)%ar%n %C(auto)%d%n"
+    detail = "%C(auto)%h %s%n  %C(yellow)by %C(blue)%an %C(magenta)<%ae> [%G?] %C(green)%ar%n %C(auto)%d%n"
+
+[core]
+    excludesfile = ~/.gitignore_global
+    autocrlf = input
+    eol = lf
+
+[credential]
+    helper = cache --timeout=3600
+
+[grep]
+    lineNumber = true
+
+[push]
+    default = simple
