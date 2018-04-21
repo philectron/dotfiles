@@ -106,22 +106,6 @@ noremap <silent> <C-s> :update<CR>
 vnoremap <silent> <C-s> <C-c>:update<CR>
 inoremap <silent> <C-s> <C-o>:update<CR>
 
-" autoclose parentheses
-"inoremap ( ()<Left>
-"inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-" autoclose brackets
-"inoremap [ []<Left>
-"inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
-" autoclose braces
-"inoremap { {}<Left>
-"inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
-" autoclose single quotes
-"inoremap ' ''<Left>
-"inoremap <expr> ' strpart(getline('.'), col('.')-1, 1) == "\'" ? "\<Right>" : "\'\'\<Left>"
-" autoclose double quotes
-"inoremap " ""<Left>
-"inoremap <expr> " strpart(getline('.'), col('.')-1, 1) == "\"" ? "\<Right>" : "\"\"\<Left>"
-
 "===============================================================================
 " Windows
 "===============================================================================
