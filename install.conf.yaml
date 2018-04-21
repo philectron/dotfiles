@@ -14,7 +14,6 @@
     ~/.gitignore_global:
     ~/.inputrc:
     ~/.ssh/config: ssh/config
-    ~/.tmux.conf:
     ~/.vim:
     ~/.vimrc:
 
