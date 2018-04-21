@@ -3,14 +3,14 @@ set nocompatible
 
 " use mouse in terminal if available
 if has('mouse')
-    set mouse=a
+  set mouse=a
 endif
 
 " remap <Leader> key
 let mapleader=","
 
 "===============================================================================
-" Pathogen
+" Vim-Pathogen
 "===============================================================================
 
 runtime bundle/vim-pathogen/autoload/pathogen.vim
@@ -28,12 +28,6 @@ syntax on
 " Appearance
 "===============================================================================
 
-" base16-vim
-if filereadable(expand("~/.vimrc_background"))
-    let base16colorspace=256
-    source ~/.vimrc_background
-endif
-
 " show matching braces when cursor is over them
 set showmatch
 
@@ -50,10 +44,11 @@ set showmode
 " Formatting
 "===============================================================================
 
-" always set autoindenting on
+" always set auto-indenting on
 filetype plugin indent on
 set autoindent
-" copy the previous indentation on autoindenting
+
+" copy the previous indentation on auto-indenting
 set copyindent
 
 " on pressing tab, insert 4 spaces
@@ -82,13 +77,13 @@ set backspace=indent,eol,start
 " incremental search (as string is being typed)
 set incsearch
 
-" high light search
+" highlight search
 set hls
 
 " show current command
 set showcmd
 
-"more history
+" show more history
 set history=8193
 
 " ignore case but not all-caps
@@ -110,11 +105,11 @@ inoremap <silent> <C-s> <C-o>:update<CR>
 " Windows
 "===============================================================================
 
-" natural split openning
+" natural split opening
 set splitbelow
 set splitright
 
-" quicker splitted windows navigations
+" quicker split windows navigation
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -125,35 +120,66 @@ nnoremap <C-H> <C-W><C-H>
 "===============================================================================
 
 "=======================================
+" base16-vim
+"=======================================
+if filereadable(expand("~/.vimrc_background"))
+  let base16colorspace=256
+  source ~/.vimrc_background
+endif
+
+"=======================================
+" Auto-Pairs
+"=======================================
+let g:AutoPairsFlyMode = 1
+
+"=======================================
+" NERDCommenter
+"=======================================
+" add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+"=======================================
 " NERDTree
 "=======================================
 nnoremap <Leader>n :NERDTreeToggle<Enter>
 nnoremap <Leader>f :NERDTreeFind<Enter>
-" close nerd three if it's the only thing still open
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-" automatically open nerdtreee when vim starts up with no file specified
+
+" open NERDTree when vim starts up with no file specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-"=======================================
-" vim-airline
-"=======================================
-let g:airline_theme='powerlineish'
+" close Vim if NERDTree is the only thing still open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "=======================================
-" syntastic
+" Syntastic
 "=======================================
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_mode_map = {
-    \ 'mode': 'passive',
-    \ 'active_filetypes': [],
-    \ 'passive_filetypes': []
+  \ 'mode': 'passive',
+  \ 'active_filetypes': [],
+  \ 'passive_filetypes': []
 \}
 nnoremap <Leader>s :SyntasticCheck<CR>
 nnoremap <Leader>r :SyntasticReset<CR>
@@ -161,31 +187,16 @@ nnoremap <Leader>i :SyntasticInfo<CR>
 nnoremap <Leader>m :SyntasticToggleMode<CR>
 
 "=======================================
-" ctrlp
+" Vim-Airline
 "=======================================
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-
-"=======================================
-" NERDCommenter
-"=======================================
-" Add spaces after comment delimiters by default
-let g:NERDSpaceDelims = 1
-" Use compact syntax for prettified multi-line comments
-let g:NERDCompactSexyComs = 1
-" Align line-wise comment delimiters flush left instead of following code indentation
-let g:NERDDefaultAlign = 'left'
-" Set a language to use its alternate delimiters by default
-"let g:NERDAltDelims_java = 1
-" Allow commenting and inverting empty lines (useful when commenting a region)
-let g:NERDCommentEmptyLines = 1
-" Enable trimming of trailing whitespace when uncommenting
-let g:NERDTrimTrailingWhitespace = 1
+let g:airline_theme='base16'
 
 "===============================================================================
-" Local customizations
+" Local customization
 "===============================================================================
-" local customizations in ~/.vimrc_local
+
+" local customization in ~/.vimrc_local
 let $LOCALFILE=expand("~/.vimrc_local")
 if filereadable($LOCALFILE)
-    source $LOCALFILE
+  source $LOCALFILE
 endif
