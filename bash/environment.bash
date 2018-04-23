@@ -16,4 +16,4 @@ export PATH=~/eclipse/cpp-oxygen/eclipse:$PATH
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/.mujoco/mjpro150/bin
 export workspacePath=~/dev
 export PYTHONPATH=$workspacePath/rllab:$PYTHONPATH
-export PATH=/home/phi/anaconda2/bin:$PATH
+export PATH=~/anaconda2/bin:$PATH
