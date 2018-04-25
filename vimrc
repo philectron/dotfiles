@@ -3,11 +3,11 @@ set nocompatible
 
 " use mouse in terminal if available
 if has('mouse')
-  set mouse=a
+  set mouse = a
 endif
 
 " remap <Leader> key
-let mapleader=","
+let mapleader = ','
 
 "===============================================================================
 " Vim-Pathogen
@@ -55,24 +55,24 @@ set copyindent
 set expandtab
 
 " when indenting with tab, use 4-space width
-set shiftwidth=4
+set shiftwidth = 4
 set smarttab
 
 " when hitting backspace, pretend like a tab is removed, even if spaces
-set softtabstop=4
+set softtabstop = 4
 
 " a tab is four spaces
-set tabstop=4
+set tabstop = 4
 
-" pressing F5 = remove all trailing whitespace
-nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:noh<Bar><CR>
+" pressing F5 will remove all trailing whitespace
+nnoremap <F5> :let _s = @/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:noh<Bar><CR>
 
 "===============================================================================
 " Editing
 "===============================================================================
 
 " allow backspacing over everything in insert mode
-set backspace=indent,eol,start
+set backspace = indent,eol,start
 
 " incremental search (as string is being typed)
 set incsearch
@@ -84,19 +84,19 @@ set hls
 set showcmd
 
 " show more history
-set history=8193
+set history = 8193
 
 " ignore case but not all-caps
 set ignorecase
 set smartcase
 
-" Ctrl-C = copy selected visual to clipboard
+" Ctrl-C will copy selected visual to clipboard
 vnoremap <C-c> "+y
 
-" Ctrl-V = paste and indent
+" Ctrl-V will paste and indent
 nnoremap <C-v> "+p=`]
 
-" Ctrl-S = save
+" Ctrl-S will save
 noremap <silent> <C-s> :update<CR>
 vnoremap <silent> <C-s> <C-c>:update<CR>
 inoremap <silent> <C-s> <C-o>:update<CR>
@@ -122,8 +122,8 @@ nnoremap <C-H> <C-W><C-H>
 "=======================================
 " base16-vim
 "=======================================
-if filereadable(expand("~/.vimrc_background"))
-  let base16colorspace=256
+if filereadable(expand('~/.vimrc_background'))
+  let base16colorspace = 256
   source ~/.vimrc_background
 endif
 
@@ -160,7 +160,7 @@ nnoremap <Leader>n :NERDTreeToggle<Enter>
 nnoremap <Leader>f :NERDTreeFind<Enter>
 
 " open NERDTree when vim starts up with no file specified
-autocmd StdinReadPre * let s:std_in=1
+autocmd StdinReadPre * let s:std_in = 1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " close Vim if NERDTree is the only thing still open
@@ -169,9 +169,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "=======================================
 " Syntastic
 "=======================================
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+set statusline+ = %#warningmsg#
+set statusline+ = %{SyntasticStatuslineFlag()}
+set statusline+ = %*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -189,7 +189,7 @@ nnoremap <Leader>m :SyntasticToggleMode<CR>
 "=======================================
 " Vim-Airline
 "=======================================
-let g:airline_theme='base16'
+let g:airline_theme = 'base16'
 
 "=======================================
 " Vim-Closetag
@@ -217,7 +217,7 @@ let g:closetag_close_shortcut = '<Leader>>'
 "===============================================================================
 
 " local customization in ~/.vimrc_local
-let $LOCALFILE=expand("~/.vimrc_local")
+let $LOCALFILE = expand('~/.vimrc_local')
 if filereadable($LOCALFILE)
   source $LOCALFILE
 endif
