@@ -3,7 +3,7 @@ set nocompatible
 
 " use mouse in terminal if available
 if has('mouse')
-  set mouse = a
+  set mouse=a
 endif
 
 " remap <Leader> key
@@ -55,14 +55,14 @@ set copyindent
 set expandtab
 
 " when indenting with tab, use 4-space width
-set shiftwidth = 4
+set shiftwidth=4
 set smarttab
 
 " when hitting backspace, pretend like a tab is removed, even if spaces
-set softtabstop = 4
+set softtabstop=4
 
 " a tab is four spaces
-set tabstop = 4
+set tabstop=4
 
 " pressing F5 will remove all trailing whitespace
 nnoremap <F5> :let _s = @/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:noh<Bar><CR>
@@ -72,7 +72,7 @@ nnoremap <F5> :let _s = @/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:noh<Bar><CR>
 "===============================================================================
 
 " allow backspacing over everything in insert mode
-set backspace = indent,eol,start
+set backspace=indent,eol,start
 
 " incremental search (as string is being typed)
 set incsearch
@@ -84,7 +84,7 @@ set hls
 set showcmd
 
 " show more history
-set history = 8193
+set history=8193
 
 " ignore case but not all-caps
 set ignorecase
@@ -169,9 +169,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "=======================================
 " Syntastic
 "=======================================
-set statusline+ = %#warningmsg#
-set statusline+ = %{SyntasticStatuslineFlag()}
-set statusline+ = %*
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
