@@ -128,11 +128,6 @@ if filereadable(expand('~/.vimrc_background'))
 endif
 
 "=======================================
-" Auto-Pairs
-"=======================================
-let g:AutoPairsFlyMode = 1
-
-"=======================================
 " NERDCommenter
 "=======================================
 " add spaces after comment delimiters by default
