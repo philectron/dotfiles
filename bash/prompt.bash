@@ -107,12 +107,8 @@ PS1+="\[${BOLD}${GREEN}\]\h "
 PS1+="\[$WHITE\]in "
 PS1+="\[${BOLD}${YELLOW}\]\w"
 
-#PS1+="\[$WHITE\]\$([[ -n \$(git branch 2> /dev/null) ]] && echo \" on \")"
-#PS1+="\[${BOLD}${PURPLE}\]\$(parse_git_branch)"
-
 # Git repository details
-PS1+="\[${BOLD}${PURPLE}\]\$(prompt_git \"\[${WHITE}\] on \
-\[${BOLD}${PURPLE}\]\" \"\[${BOLD}${PURPLE}\]\")";
+PS1+="\[${BOLD}${PURPLE}\]\$(prompt_git \"\[${WHITE}\] on \[${BOLD}${PURPLE}\]\" \"\[${BOLD}${PURPLE}\]\")";
 
 PS1+="\[$WHITE\]\n\$ "
 PS1+="\[$RESET\]"
