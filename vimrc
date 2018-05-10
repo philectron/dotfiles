@@ -6,6 +6,11 @@ if has('mouse')
   set mouse=a
 endif
 
+" enable filetype detection:
+filetype on
+filetype plugin on
+filetype indent on
+
 " remap <Leader> key
 let mapleader = ','
 
@@ -45,13 +50,12 @@ set showmode
 "===============================================================================
 
 " always set auto-indenting on
-filetype plugin indent on
 set autoindent
 
 " copy the previous indentation on auto-indenting
 set copyindent
 
-" on pressing tab, insert 4 spaces
+" on pressing tab, insert spaces
 set expandtab
 
 " when indenting with tab, use 4-space width
@@ -61,7 +65,7 @@ set smarttab
 " when hitting backspace, pretend like a tab is removed, even if spaces
 set softtabstop=4
 
-" a tab is four spaces
+" a tab is 4 spaces
 set tabstop=4
 
 " pressing F5 will remove all trailing whitespace
