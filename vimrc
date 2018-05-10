@@ -7,9 +7,7 @@ if has('mouse')
 endif
 
 " enable filetype detection:
-filetype on
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 
 " remap <Leader> key
 let mapleader = ','
