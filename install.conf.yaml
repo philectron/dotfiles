@@ -13,7 +13,9 @@
     ~/.gitconfig:
     ~/.gitignore_global:
     ~/.inputrc:
+    ~/.jsbeautifyrc:
     ~/.ssh/config: ssh/config
+    ~/.uncrustifyrc:
     ~/.vim:
     ~/.vimrc:
 
