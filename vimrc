@@ -92,13 +92,13 @@ set history=8193
 set ignorecase
 set smartcase
 
-" Ctrl-C will copy selected visual to clipboard
+" Ctrl + C will copy selected visual to clipboard
 vnoremap <C-c> "+y
 
-" Ctrl-V will paste and indent
+" Ctrl + V will paste and indent
 nnoremap <C-v> "+p=`]
 
-" Ctrl-S will save
+" Ctrl + S will save
 noremap <silent> <C-s> :update<CR>
 vnoremap <silent> <C-s> <C-c>:update<CR>
 inoremap <silent> <C-s> <C-o>:update<CR>
@@ -116,6 +116,13 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" Ctrl + W + _ will max out the height of the current split
+" Ctrl + W + | will max out the width of the current split
+" Ctrl + W + = will normalize all split sizes
+" Ctrl + W + R will swap top/bottom or left/right split
+" Ctrl + W + T will break out current window into a new tabview
+" Ctrl + W + o will close all windows in the current tabview but the current one
 
 "===============================================================================
 " Plugin configurations
