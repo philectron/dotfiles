@@ -15,7 +15,7 @@
     ~/.inputrc:
     ~/.jsbeautifyrc:
     ~/.ssh/config: ssh/config
-    ~/.uncrustifyrc:
+    ~/uncrustify.cfg:
     ~/.vim:
     ~/.vimrc:
 
