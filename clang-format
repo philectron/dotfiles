@@ -18,7 +18,21 @@ AlwaysBreakTemplateDeclarations: 'true'
 BinPackArguments: 'true'
 BinPackParameters: 'true'
 BreakBeforeBinaryOperators: NonAssignment
-BreakBeforeBraces: Attach
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterClass: 'true'
+  AfterControlStatement: 'false'
+  AfterEnum: 'false'
+  AfterFunction: 'false'
+  AfterNamespace: 'false'
+  AfterStruct: 'false'
+  AfterUnion: 'false'
+  BeforeCatch: 'false'
+  BeforeElse: 'false'
+  IndentBraces: 'false'
+  # SplitEmptyFunction: 'false'
+  # SplitEmptyRecord: 'false'
+  # SplitEmptyNamespace: 'false'
 # BreakBeforeInheritanceComma: 'false'
 BreakBeforeTernaryOperators: 'true'
 # BreakConstructorInitializers: BeforeColon
