@@ -218,6 +218,9 @@ sp_type_brace_init_lst          = force    # ignore/add/remove/force
 # Add or remove space between function name and '(' on function declaration.
 sp_func_proto_paren             = remove   # ignore/add/remove/force
 
+# Add or remove space between function name and '()' on function declaration without parameters.
+sp_func_proto_paren_empty       = remove   # ignore/add/remove/force
+
 # Add or remove space between function name and '(' on function definition.
 sp_func_def_paren               = remove   # ignore/add/remove/force
 
@@ -383,6 +386,9 @@ indent_class                    = true     # false/true
 # Whether to indent the stuff after a leading base class colon.
 indent_class_colon              = true     # false/true
 
+# Whether to indent comments found in first column.
+indent_col1_comment             = true     # false/true
+
 # Same as indent_label, but for access specifiers that are followed by a colon. Default=1
 indent_access_spec              = -4       # number
 
@@ -465,8 +471,26 @@ nl_else_brace                   = remove   # ignore/add/remove/force
 # Add or remove newline between 'else' and 'if'.
 nl_else_if                      = remove   # ignore/add/remove/force
 
+# Add or remove newline between '}' and 'finally'.
+nl_brace_finally                = remove   # ignore/add/remove/force
+
+# Add or remove newline between 'finally' and '{'.
+nl_finally_brace                = remove   # ignore/add/remove/force
+
+# Add or remove newline between 'try' and '{'.
+nl_try_brace                    = remove   # ignore/add/remove/force
+
+# Add or remove newline between get/set and '{'.
+nl_getset_brace                 = remove   # ignore/add/remove/force
+
 # Add or remove newline between 'for' and '{'.
 nl_for_brace                    = remove   # ignore/add/remove/force
+
+# Add or remove newline between 'catch' and '{'.
+nl_catch_brace                  = remove   # ignore/add/remove/force
+
+# Add or remove newline between '}' and 'catch'.
+nl_brace_catch                  = remove   # ignore/add/remove/force
 
 # Add or remove newline between 'while' and '{'.
 nl_while_brace                  = remove   # ignore/add/remove/force
@@ -759,5 +783,5 @@ pp_space                        = force    # ignore/add/remove/force
 #       `macro-open  BEGIN_MESSAGE_MAP`
 #       `macro-close END_MESSAGE_MAP`
 #
-## option(s) with 'not default' value: 209
+## option(s) with 'not default' value: 217
 #
