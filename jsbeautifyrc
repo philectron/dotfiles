@@ -1,40 +1,45 @@
 {
-  "brace_style": "collapse",
-  "css": {
-    "newline-between-rules": true,
-    "selector_separator_newline": true,
-    "wrap_line_length": 80
-  },
   "end_with_newline": true,
   "eol": "\n",
-  "html": {
-    "content_unformatted": ["pre"],
-    "extra_liners": ["head", "body", "/html"],
-    "indent-scripts": "normal",
-    "indent_inner_html": true,
-    "unformatted": ["inline"],
-    "wrap-attributes": "auto",
-    "wrap-attributes-indent-size": "force-aligned",
-    "wrap_line_length": 120
-  },
   "indent_char": " ",
   "indent_size": 2,
   "indent_with_tabs": false,
+  "css": {
+    "brace_style": "collapse",
+    "newline_between_rules": true,
+    "selector_separator_newline": true,
+    "wrap_line_length": 80
+  },
+  "html": {
+    "brace_style": "collapse-preserve-inline",
+    "content_unformatted": ["pre"],
+    "extra_liners": ["head", "body", "/html"],
+    "indent_inner_html": true,
+    "indent_scripts": "normal",
+    "max_preserve_newlines": 3,
+    "preserve_newlines": true,
+    "unformatted": ["a", "abbr", "acronym", "b", "bdo", "big", "br", "button", "cite", "code", "dfn", "em", "i", "img", "input", "kbd", "label", "map", "object", "q", "samp", "script", "select", "small", "span", "strong", "sub", "sup", "textarea", "time", "tt", "var"],
+    "wrap_attributes": "auto",
+    "wrap_attributes_indent_size": "force-aligned",
+    "wrap_line_length": 120
+  },
   "js": {
+    "brace_style": "collapse,preserve-inline",
     "break_chained_methods": false,
-    "comma-first": false,
+    "comma_first": false,
     "e4x": false,
+    "indent_level": 0,
     "jslint_happy": false,
     "keep_array_indentation": false,
     "keep_function_indentation": false,
+    "max_preserve_newlines": 3,
     "operator_position": "before-newline",
+    "preserve_newlines": true,
     "space_after_anon_function": false,
-    "space_before_conditional": true,
     "space_in_empty_paren": false,
     "space_in_paren": false,
     "unescape_strings": false,
+    "unindent_chained_methods": false,
     "wrap_line_length": 80
-  },
-  "max_preserve_newlines": 10,
-  "preserve_newlines": true
+  }
 }
