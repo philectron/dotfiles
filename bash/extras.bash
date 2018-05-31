@@ -6,3 +6,6 @@
 
 # disable Ctrl-S = hang terminal
 stty -ixon
+
+# set 755 as default permission (user: rwx, group: r-x, public: r-x)
+umask 0022
