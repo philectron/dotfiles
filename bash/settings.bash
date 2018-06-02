@@ -1,7 +1,7 @@
-export EDITOR='vim';
-export LESS='QMcdR';
-export MORE='-c';
-export PAGER=less;
+export EDITOR='vim'
+export LESS='QMcdR'
+export MORE='-c'
+export PAGER=less
 
 # bash_history configuration
 shopt -s histappend
@@ -22,7 +22,7 @@ export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
 
 # Highlight section titles in man page
-export LESS_TERMCAP_md="${yellow}";
+export LESS_TERMCAP_md="${yellow}"
 
 # Don't clear the screen after quiting a man page
 export MANPAGER='less -X'
