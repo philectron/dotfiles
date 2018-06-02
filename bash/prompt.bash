@@ -5,10 +5,10 @@
 
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] \
   && infocmp gnome-256color >/dev/null 2>&1; then
-  TERM=gnome-256color;
+  TERM=gnome-256color
 fi
 
-# Use the list of 256 Xterm colors. For reference:
+# use the list of 256 Xterm colors. For reference:
 # https://jonasjacek.github.io/colors/
 # tput colors approximated from Tomorrow Night theme at
 # https://github.com/chriskempson/tomorrow-theme#tomorrow-night
@@ -44,76 +44,81 @@ else
 fi
 
 parse_git_dirty () {
-  [[ $(git status 2> /dev/null | tail -n1) != 'nothing to commit \
-    (working directory clean)' ]] && echo '*'
-}
-parse_git_branch () {
-  git branch --no-color 2> /dev/null | sed -e "/^[^*]/d" -e "s/* \
-    \(.*\)/\1$(parse_git_dirty)/"
+  [[ $(git status 2> /dev/null | tail -n1) \
+    != 'nothing to commit (working directory clean)' ]] \
+    && echo '*'
 }
 
+parse_git_branch () {
+  git branch --no-color 2> /dev/null \
+    | sed -e "/^[^*]/d" -e "s/*\(.*\)/\1$(parse_git_dirty)/"
+}
 
 prompt_git() {
-  local s='';
-  local branchName='';
+  local s=''
+  local branchName=''
 
-  # Check if the current directory is in a Git repository.
-  if [ $(git rev-parse --is-inside-work-tree &>/dev/null; echo "${?}") == '0' ]
-  then
+  # check if the current directory is in a Git repository
+  if [ $(git rev-parse --is-inside-work-tree &>/dev/null; \
+     echo "${?}") == '0' ]; then
     # check if the current directory is in .git before running git checks
     if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]; then
-      # Ensure the index is up to date.
-      git update-index --really-refresh -q &>/dev/null;
+      # ensure the index is up to date
+      git update-index --really-refresh -q &>/dev/null
 
-      # Check for uncommitted changes in the index.
+      # check for uncommitted changes in the index
       if ! $(git diff --quiet --ignore-submodules --cached); then
-        s+='+';
+        s+='+'
       fi
 
-      # Check for unstaged changes.
+      # check for unstaged changes
       if ! $(git diff-files --quiet --ignore-submodules --); then
-        s+='!';
+        s+='!'
       fi
 
-      # Check for untracked files.
+      # check for untracked files
       if [ -n "$(git ls-files --others --exclude-standard)" ]; then
-        s+='?';
+        s+='?'
       fi
 
-      # Check for stashed files.
+      # check for stashed files
       if $(git rev-parse --verify refs/stash &>/dev/null); then
-        s+='$';
+        s+='$'
       fi
     fi
 
-    # Get the short symbolic ref.
-    # If HEAD isn’t a symbolic ref, get the short SHA for the latest commit
-    # Otherwise, just give up.
+    # get the short symbolic ref.
+    # if HEAD isn’t a symbolic ref, get the short SHA for the latest commit
+    # otherwise, just give up.
     branchName="$(git symbolic-ref --quiet --short HEAD 2> /dev/null \
       || git rev-parse --short HEAD 2> /dev/null \
-      || echo '(unknown)')";
+      || echo '(unknown)')"
 
-    [ -n "${s}" ] && s=" [${s}]";
+    [ -n "${s}" ] && s=" [${s}]"
 
-    echo -e "${1}${branchName}${2}${s}";
+    echo -e "${1}${branchName}${2}${s}"
   else
-    return;
+    return
   fi
 }
 
+# basic prompt: 'User at Host in Directory'
 PS1="\[${BOLD}${MAGENTA}\]\u "
 PS1+="\[$WHITE\]at "
 PS1+="\[${BOLD}${GREEN}\]\h "
 PS1+="\[$WHITE\]in "
 PS1+="\[${BOLD}${YELLOW}\]\w"
 
-# Git repository details
-PS1+="\[${BOLD}${PURPLE}\]\$(prompt_git \"\[${WHITE}\] on \[${BOLD}${PURPLE}\]\" \"\[${BOLD}${PURPLE}\]\")";
+# if in a git repository, concatenate ' on Branch [Status]' into the prompt
+git_branch='\[${WHITE}\] on \[${BOLD}${PURPLE}\]'
+git_status='\[${BOLD}${PURPLE}\]'
+PS1+="\[${BOLD}${PURPLE}\]\$(prompt_git \"$git_branch\" \"$git_status\")";
 
+# put '$' on the next line, use '...' for long Directory path, and export
 PS1+="\[$WHITE\]\n\$ "
 PS1+="\[$RESET\]"
 PROMPT_DIRTRIM=5
-export PS1;
+export PS1
 
-PS2="\[${BOLD}${YELLOW}\]→ \[${RESET}\]";
-export PS2;
+PS2="\[${BOLD}${YELLOW}\]→ \[${RESET}\]"
+export PS2
