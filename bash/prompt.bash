@@ -112,7 +112,7 @@ PS1+="\[${BOLD}${YELLOW}\]\w"
 # if in a git repository, concatenate ' on Branch [Status]' into the prompt
 git_branch='\[${WHITE}\] on \[${BOLD}${PURPLE}\]'
 git_status='\[${BOLD}${PURPLE}\]'
-PS1+="\[${BOLD}${PURPLE}\]\$(prompt_git \"$git_branch\" \"$git_status\")";
+PS1+="\[${BOLD}${PURPLE}\]\$(prompt_git \"$git_branch\" \"$git_status\")"
 
 # put '$' on the next line, use '...' for long Directory path, and export
 PS1+="\[$WHITE\]\n\$ "
