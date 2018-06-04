@@ -43,17 +43,6 @@ else
   RESET="\033[m"
 fi
 
-parse_git_dirty () {
-  [[ $(git status 2> /dev/null | tail -n1) \
-    != 'nothing to commit (working directory clean)' ]] \
-    && echo '*'
-}
-
-parse_git_branch () {
-  git branch --no-color 2> /dev/null \
-    | sed -e "/^[^*]/d" -e "s/*\(.*\)/\1$(parse_git_dirty)/"
-}
-
 prompt_git() {
   local s=''
   local branchName=''
@@ -110,9 +99,7 @@ PS1+="\[$WHITE\]in "
 PS1+="\[${BOLD}${YELLOW}\]\w"
 
 # if in a git repository, concatenate ' on Branch [Status]' into the prompt
-git_branch='\[${WHITE}\] on \[${BOLD}${PURPLE}\]'
-git_status='\[${BOLD}${PURPLE}\]'
-PS1+="\[${BOLD}${PURPLE}\]\$(prompt_git \"$git_branch\" \"$git_status\")"
+PS1+="\$(prompt_git \"\[${WHITE}\] on \[${BOLD}${PURPLE}\]\")"
 
 # put '$' on the next line, use '...' for long Directory path, and export
 PS1+="\[$WHITE\]\n\$ "
