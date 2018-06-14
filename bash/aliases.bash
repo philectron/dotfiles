@@ -23,16 +23,16 @@ alias mv='mv -i'
 # ps processes ran by $USER
 alias psme="ps -o ppid,pid,euser,stat,%cpu,rss,args | head -n 1; \
   ps -eH -o ppid,pid,euser,stat,%cpu,rss,args | grep $USER"
-stty erase "^?"
+stty erase '^?'
 
 # Add an "alert" alias for long running commands.
 # Use like so: sleep 10; alert
 alias alert='notify-send --urgency=low -i \
   "$([ $? = 0 ] && echo terminal || echo error)" \
-  "$(history 1|sed '\''s/^\s*[0-9]\+\s\+\(.*\)[;&|]\s*alert$/\1/'\'')"'
+  "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # mount OSU Flip server to ~/flip/ quickly
-alias flip_mount="mkdir -p ~/flip/ \
-  && sshfs -o allow_other,IdentityFile=~/.ssh/id_rsa \
-  luuph@flip.engr.oregonstate.edu:/nfs/stak/users/luuph/ ~/flip/"
-alias flip_umount="sudo umount ~/flip/ && rm -rf ~/flip/"
+alias flip_mount='mkdir -p ~/flip/ \
+  && sshfs -o allow_other \
+  luuph@flip.engr.oregonstate.edu:/nfs/stak/users/luuph/ ~/flip/'
+alias flip_umount='sudo umount ~/flip/ && rm -rf ~/flip/'
