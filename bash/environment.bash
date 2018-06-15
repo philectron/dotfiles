@@ -1,8 +1,8 @@
-# System related
+# system related
 export PATH=$PATH:~/bin
 export PATH=$PATH:.
 
-# Make python use UTF-8 encoding for output to stdin, stdout, stderr
+# make python use UTF-8 encoding for output to stdin, stdout, stderr
 export PYTHONIOENCODING='UTF-8'
 
 # colored GCC warnings and errors;
