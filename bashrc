@@ -1,7 +1,7 @@
-# If not running interactively, don't do anything
+# if not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# Otherwise, load the following
+# otherwise, load the following
 source ~/.bash/local_before.bash
 source ~/.bash/settings.bash
 source ~/.bash/environment.bash

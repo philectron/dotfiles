@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # Sexy Bash Prompt, inspired by "Extravagant Zsh Prompt"
-# A big thanks to \amethyst on Freenode
+# a big thanks to \amethyst on Freenode
 
 if [[ $COLORTERM = gnome-* && $TERM = xterm ]] \
   && infocmp gnome-256color >/dev/null 2>&1; then
