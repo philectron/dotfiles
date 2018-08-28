@@ -31,6 +31,9 @@ alias alert='notify-send --urgency=low -i \
   "$([ $? = 0 ] && echo terminal || echo error)" \
   "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+# shorthand for a more detailed leak check valgrind
+alias valgrind='valgrind --leak-check=full --show-leak-kinds=all'
+
 # mount OSU Flip server to ~/flip/ quickly
 alias flip_mount='mkdir -p ~/flip/ \
   && sshfs -o allow_other \
