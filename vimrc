@@ -43,6 +43,10 @@ set relativenumber
 " always show the current editing mode
 set showmode
 
+" show ruler indicating column limits
+set colorcolumn=80,100,120,255
+highlight ColorColumn ctermbg=7 guibg=lightgrey
+
 "===============================================================================
 " Formatting
 "===============================================================================
