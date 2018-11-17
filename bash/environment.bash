@@ -17,4 +17,4 @@ export PYTHONPATH=$workspacePath/rllab:$PYTHONPATH
 
 # mongoDB
 export MONGO_HOST='127.0.0.1'
-export MONGO_DB_NAME='osu_cs290_gymrats'
+export MONGO_DB_NAME='gymrats'
