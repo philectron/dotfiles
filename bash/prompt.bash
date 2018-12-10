@@ -3,7 +3,7 @@
 # Sexy Bash Prompt, inspired by "Extravagant Zsh Prompt"
 # a big thanks to \amethyst on Freenode
 
-if [[ $COLORTERM = gnome-* && $TERM = xterm ]] \
+if [[ ${COLORTERM} = gnome-* && ${TERM} = xterm ]] \
   && infocmp gnome-256color >/dev/null 2>&1; then
   TERM=gnome-256color
 fi
@@ -48,10 +48,10 @@ prompt_git() {
   local branchName=''
 
   # check if the current directory is in a Git repository
-  if [ $(git rev-parse --is-inside-work-tree &>/dev/null; \
-     echo "${?}") == '0' ]; then
+  if [[ $(git rev-parse --is-inside-work-tree &>/dev/null; \
+     echo "$?") == '0' ]]; then
     # check if the current directory is in .git before running git checks
-    if [ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]; then
+    if [[ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]]; then
       # ensure the index is up to date
       git update-index --really-refresh -q &>/dev/null
 
@@ -83,7 +83,7 @@ prompt_git() {
       || git rev-parse --short HEAD 2> /dev/null \
       || echo '(unknown)')"
 
-    [ -n "${s}" ] && s=" [${s}]"
+    [[ -n "${s}" ]] && s=" [${s}]"
 
     echo -e "${1}${branchName}${2}${s}"
   else
@@ -93,17 +93,17 @@ prompt_git() {
 
 # basic prompt: 'User at Host in Directory'
 PS1="\[${BOLD}${MAGENTA}\]\u "
-PS1+="\[$WHITE\]at "
+PS1+="\[${WHITE}\]at "
 PS1+="\[${BOLD}${GREEN}\]\h "
-PS1+="\[$WHITE\]in "
+PS1+="\[${WHITE}\]in "
 PS1+="\[${BOLD}${YELLOW}\]\w"
 
 # if in a git repository, concatenate ' on Branch [Status]' into the prompt
 PS1+="\$(prompt_git \"\[${WHITE}\] on \[${BOLD}${PURPLE}\]\")"
 
 # put '$' on the next line, use '...' for long Directory path, and export
-PS1+="\[$WHITE\]\n\$ "
-PS1+="\[$RESET\]"
+PS1+="\[${WHITE}\]\n\$ "
+PS1+="\[${RESET}\]"
 PROMPT_DIRTRIM=5
 export PS1
 

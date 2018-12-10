@@ -20,9 +20,9 @@ alias cp='cp -i'
 alias rm='rm -i'
 alias mv='mv -i'
 
-# ps processes ran by $USER
+# ps processes ran by ${USER}
 alias psme="ps -o ppid,pid,euser,stat,%cpu,rss,args | head -n 1; \
-  ps -eH -o ppid,pid,euser,stat,%cpu,rss,args | grep $USER"
+  ps -eH -o ppid,pid,euser,stat,%cpu,rss,args | grep ${USER}"
 stty erase '^?'
 
 # add an "alert" alias for long running commands.

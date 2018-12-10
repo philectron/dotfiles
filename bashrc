@@ -1,5 +1,5 @@
 # if not running interactively, don't do anything
-[ -z "$PS1" ] && return
+[[ -z "${PS1}" ]] && return
 
 # otherwise, load the following
 source ~/.bash/local_before.bash
