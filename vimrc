@@ -8,7 +8,6 @@ endif
 
 " enable filetype detection:
 filetype plugin indent on
-
 " remap <Leader> key
 let mapleader = ','
 
@@ -138,6 +137,8 @@ nnoremap <C-H> <C-W><C-H>
 if filereadable(expand('~/.vimrc_background'))
   let base16colorspace = 256
   source ~/.vimrc_background
+elseif !exists('g:colors_name') || g:colors_name != 'base16-tomorrow-night'
+  colorscheme base16-tomorrow-night
 endif
 
 "=======================================
