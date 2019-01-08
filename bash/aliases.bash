@@ -39,3 +39,6 @@ alias flip_mount='mkdir -p ~/flip/ \
   && sshfs -o allow_other \
   luuph@flip.engr.oregonstate.edu:/nfs/stak/users/luuph/ ~/flip/'
 alias flip_umount='sudo umount ~/flip/ && rm -rf ~/flip/'
+
+# ssh to OSU OS1 server quickly
+alias os1='ssh -A -t flip ssh -A os1'
