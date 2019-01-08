@@ -1,23 +1,23 @@
-host apollo
-    hostname 10.0.0.6
-    user phi
+Host apollo
+    HostName 10.0.0.6
+    User phi
 
-host flip
-    hostname flip.engr.oregonstate.edu
-    user luuph
+Host flip
+    HostName flip.engr.oregonstate.edu
+    User luuph
+    IdentityFile ~/.ssh/osu_flip
 
-host flip1
-    hostname flip1.engr.oregonstate.edu
-    user luuph
+Host flip1
+    HostName flip1.engr.oregonstate.edu
+    User luuph
+    IdentityFile ~/.ssh/osu_flip
 
-host flip2
-    hostname flip2.engr.oregonstate.edu
-    user luuph
+Host flip2
+    HostName flip2.engr.oregonstate.edu
+    User luuph
+    IdentityFile ~/.ssh/osu_flip
 
-host flip3
-    hostname flip3.engr.oregonstate.edu
-    user luuph
-
-host os1
-    hostname os1.engr.oregonstate.edu
-    user luuph
+Host flip3
+    HostName flip3.engr.oregonstate.edu
+    User luuph
+    IdentityFile ~/.ssh/osu_flip
