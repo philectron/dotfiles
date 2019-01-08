@@ -1,7 +1,23 @@
-host flip
-    hostname flip3.engr.oregonstate.edu
-    user luuph
-
 host apollo
     hostname 10.0.0.6
     user phi
+
+host flip
+    hostname flip.engr.oregonstate.edu
+    user luuph
+
+host flip1
+    hostname flip1.engr.oregonstate.edu
+    user luuph
+
+host flip2
+    hostname flip2.engr.oregonstate.edu
+    user luuph
+
+host flip3
+    hostname flip3.engr.oregonstate.edu
+    user luuph
+
+host os1
+    hostname os1.engr.oregonstate.edu
+    user luuph
