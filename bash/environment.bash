@@ -18,3 +18,8 @@ export PYTHONPATH=${workspacePath}/rllab:${PYTHONPATH}
 # mongoDB
 export MONGO_HOST='127.0.0.1'
 export MONGO_DB_NAME='gymrats'
+
+# mysql for cs340
+export MYSQL_HOST='classmysql.engr.oregonstate.edu'
+export MYSQL_USER='cs340_luuph'
+export MYSQL_DB_NAME='cs340_luuph'
