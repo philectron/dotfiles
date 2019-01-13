@@ -40,4 +40,7 @@ mklink /H %UserProfile%\.vimrc %UserProfile%\dotfiles\vimrc
 del /Q %UserProfile%\.minttyrc
 mklink /H %UserProfile%\.minttyrc %UserProfile%\dotfiles\minttyrc
 
+:: update all submodules recursively
+git submodule update --init --recursive
+
 pause
