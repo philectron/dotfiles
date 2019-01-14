@@ -1,4 +1,4 @@
-:: Make Windows-style hard links/junctions for dotfiles
+rem Make Windows-style hard links/junctions for dotfiles
 
 rmdir /S /Q %UserProfile%\.bash
 mklink /J %UserProfile%\.bash %UserProfile%\dotfiles\bash
@@ -24,6 +24,9 @@ mklink /H %UserProfile%\.inputrc %UserProfile%\dotfiles\inputrc
 del /Q %UserProfile%\.jsbeautifyrc
 mklink /H %UserProfile%\.jsbeautifyrc %UserProfile%\dotfiles\jsbeautifyrc
 
+del /Q %UserProfile%\.minttyrc
+mklink /H %UserProfile%\.minttyrc %UserProfile%\dotfiles\minttyrc
+
 del /Q %UserProfile%\.ssh\config
 mklink /H %UserProfile%\.ssh\config %UserProfile%\dotfiles\ssh\config
 
@@ -36,11 +39,7 @@ mklink /J %UserProfile%\.vim %UserProfile%\dotfiles\vim
 del /Q %UserProfile%\.vimrc
 mklink /H %UserProfile%\.vimrc %UserProfile%\dotfiles\vimrc
 
-:: specific config for Mintty/Git Bash on Windows
-del /Q %UserProfile%\.minttyrc
-mklink /H %UserProfile%\.minttyrc %UserProfile%\dotfiles\minttyrc
-
-:: update all submodules recursively
+rem Update all submodules recursively
 git submodule update --init --recursive
 
 pause
