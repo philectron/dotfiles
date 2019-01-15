@@ -32,7 +32,8 @@ alias alert='notify-send --urgency=low -i \
   "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # shorthand for a more detailed leak check valgrind
-alias valgrind='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
+alias valgrind='valgrind --leak-check=full --show-leak-kinds=all \
+  --track-origins=yes'
 
 # mount OSU Flip server to ~/flip/ quickly
 alias flip_mount='mkdir -p ~/flip/ \
@@ -44,4 +45,5 @@ alias flip_umount='sudo umount ~/flip/ && rm -rf ~/flip/'
 alias os1='ssh -A -t flip ssh -A os1'
 
 # access MySQL command line client quickly
-alias dbmysql='mysql -u cs340_luuph -p -h classmysql.engr.oregonstate.edu cs340_luuph'
+alias dbmysql='mysql -u cs340_luuph -p -h classmysql.engr.oregonstate.edu \
+  cs340_luuph'
