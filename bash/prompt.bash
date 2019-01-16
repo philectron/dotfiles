@@ -12,7 +12,7 @@ fi
 # https://jonasjacek.github.io/colors/
 # tput colors approximated from Tomorrow Night theme at
 # https://github.com/chriskempson/tomorrow-theme#tomorrow-night
-if tput setaf 1 &> /dev/null; then
+if tput setaf 1 &>/dev/null; then
   tput sgr0
   if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
     MAGENTA=$(tput setaf 167)
@@ -51,7 +51,7 @@ prompt_git() {
   if [[ $(git rev-parse --is-inside-work-tree &>/dev/null; \
      echo "$?") == '0' ]]; then
     # check if the current directory is in .git before running git checks
-    if [[ "$(git rev-parse --is-inside-git-dir 2> /dev/null)" == 'false' ]]; then
+    if [[ "$(git rev-parse --is-inside-git-dir 2>/dev/null)" == 'false' ]]; then
       # ensure the index is up to date
       git update-index --really-refresh -q &>/dev/null
 
@@ -79,8 +79,8 @@ prompt_git() {
     # get the short symbolic ref.
     # if HEAD isn’t a symbolic ref, get the short SHA for the latest commit
     # otherwise, just give up.
-    branchName="$(git symbolic-ref --quiet --short HEAD 2> /dev/null \
-      || git rev-parse --short HEAD 2> /dev/null \
+    branchName="$(git symbolic-ref --quiet --short HEAD 2>/dev/null \
+      || git rev-parse --short HEAD 2>/dev/null \
       || echo '(unknown)')"
 
     [[ -n "${s}" ]] && s=" [${s}]"
@@ -92,18 +92,18 @@ prompt_git() {
 }
 
 # basic prompt: 'User at Host in Directory'
-PS1="\[${BOLD}${MAGENTA}\]\u "
-PS1+="\[${WHITE}\]at "
-PS1+="\[${BOLD}${GREEN}\]\h "
-PS1+="\[${WHITE}\]in "
+PS1="\[${BOLD}${MAGENTA}\]\u"
+PS1+="\[${WHITE}\] at "
+PS1+="\[${BOLD}${GREEN}\]\h"
+PS1+="\[${WHITE}\] in "
 PS1+="\[${BOLD}${YELLOW}\]\w"
 
 # if in a git repository, concatenate ' on Branch [Status]' into the prompt
 PS1+="\$(prompt_git \"\[${WHITE}\] on \[${BOLD}${PURPLE}\]\")"
 
 # put '$' on the next line, use '...' for long Directory path, and export
-PS1+="\[${WHITE}\]\n\$ "
-PS1+="\[${RESET}\]"
+PS1+="\[${WHITE}\]\n\$"
+PS1+="\[${RESET}\] "
 PROMPT_DIRTRIM=5
 export PS1
 
