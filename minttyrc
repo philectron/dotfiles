@@ -6,6 +6,6 @@ Font=Consolas
 FontHeight=12
 BoldAsFont=yes
 FontSmoothing=full
-BackspaceSendsBS=yes
+BackspaceSendsBS=no
 Term=xterm-256color
 BellType=0
