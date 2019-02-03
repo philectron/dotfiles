@@ -45,5 +45,5 @@ alias flip_umount='sudo umount ~/flip/ && rm -rf ~/flip/'
 alias os1='ssh -A -t flip ssh -A os1'
 
 # access MySQL command line client quickly
-alias dbmysql='mysql -u cs340_luuph -p -h classmysql.engr.oregonstate.edu \
+alias dbmysql='mysql -h classmysql.engr.oregonstate.edu -u cs340_luuph -p \
   cs340_luuph'
