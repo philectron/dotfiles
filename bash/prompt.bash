@@ -98,8 +98,11 @@ PS1+="\[${BOLD}${GREEN}\]\h"
 PS1+="\[${WHITE}\] in "
 PS1+="\[${BOLD}${YELLOW}\]\w"
 
-# if in a git repository, concatenate ' on Branch [Status]' into the prompt
-PS1+="\$(prompt_git \"\[${WHITE}\] on \[${BOLD}${PURPLE}\]\")"
+# somehow, this method to make Git prompt doesn't work on Windows
+if [[ "${OSTYPE}" == 'linux-gnu' ]]; then
+  # if in a git repository, concatenate ' on Branch [Status]' into the prompt
+  PS1+="\$(prompt_git \"\[${WHITE}\] on \[${BOLD}${PURPLE}\]\")"
+fi
 
 # put '$' on the next line, use '...' for long Directory path, and export
 PS1+="\[${WHITE}\]\n\$"

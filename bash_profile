@@ -1,9 +1,11 @@
 # if not running interactively, don't do anything
 [[ -z "${PS1}" ]] && return
 
-# inherit from .bashrc
-if [[ -f ~/.bashrc ]]; then
+if [[ -r ~/.bashrc ]]; then
+  # inherit from .bashrc
   source ~/.bashrc
+  # clear screen
+  clear
 fi
 
 # stuff for login shell

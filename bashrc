@@ -10,4 +10,5 @@ source ~/.bash/prompt.bash
 source ~/.bash/theme.bash
 source ~/.bash/functions.bash
 source ~/.bash/extras.bash
+source ~/.ssh/ssh_auto_add.sh
 source ~/.bash/local_after.bash
