@@ -1,0 +1,2 @@
+# File containing private env var of this shell and so should not be published
+environment_private.bash
