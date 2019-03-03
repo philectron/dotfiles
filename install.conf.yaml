@@ -15,6 +15,7 @@
     ~/.gitignore_global:
     ~/.inputrc:
     ~/.jsbeautifyrc:
+    ~/.minttyrc:
     ~/.ssh/config: ssh/config
     ~/.ssh/ssh_auto_add.sh: ssh/ssh_auto_add.sh
     ~/.uncrustifyrc:
