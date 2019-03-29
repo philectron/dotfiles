@@ -33,6 +33,9 @@ mklink /H %UserProfile%\.ssh\config %UserProfile%\dotfiles\ssh\config
 del /Q %UserProfile%\.ssh\ssh_auto_add.sh
 mklink /H %UserProfile%\.ssh\ssh_auto_add.sh %UserProfile%\dotfiles\ssh\ssh_auto_add.sh
 
+del /Q %UserProfile%\.tmux.conf
+mklink /H %UserProfile%\.tmux.conf %UserProfile%\dotfiles\tmux.conf
+
 del /Q %UserProfile%\.uncrustifyrc
 mklink /H %UserProfile%\.uncrustifyrc %UserProfile%\dotfiles\uncrustifyrc
 

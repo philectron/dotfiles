@@ -18,6 +18,7 @@
     ~/.minttyrc:
     ~/.ssh/config: ssh/config
     ~/.ssh/ssh_auto_add.sh: ssh/ssh_auto_add.sh
+    ~/.tmux.conf:
     ~/.uncrustifyrc:
     ~/.vim:
     ~/.vimrc:
