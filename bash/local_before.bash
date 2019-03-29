@@ -1,1 +1,1 @@
-# local configurations loaded before main configurations
+# local config loaded before main config
