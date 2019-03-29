@@ -21,3 +21,8 @@ Host flip3
     HostName flip3.engr.oregonstate.edu
     User luuph
     IdentityFile ~/.ssh/osu_flip
+
+Host onid
+    HostName shell.onid.oregonstate.edu
+    User luuph
+    IdentityFile ~/.ssh/osu_flip

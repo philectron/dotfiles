@@ -4,8 +4,9 @@
 if [[ -r ~/.bashrc ]]; then
   # inherit from .bashrc
   source ~/.bashrc
-  # clear screen
-  clear
+
+  # # clear screen
+  # clear
 fi
 
 # stuff for login shell
