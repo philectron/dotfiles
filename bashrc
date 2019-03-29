@@ -12,4 +12,3 @@ source ~/.bash/theme.bash
 source ~/.bash/functions.bash
 source ~/.bash/extras.bash
 source ~/.bash/local_after.bash
-source ~/.ssh/ssh_auto_add.sh

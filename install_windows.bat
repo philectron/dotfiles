@@ -27,12 +27,6 @@ mklink /H %UserProfile%\.jsbeautifyrc %UserProfile%\dotfiles\jsbeautifyrc
 del /Q %UserProfile%\.minttyrc
 mklink /H %UserProfile%\.minttyrc %UserProfile%\dotfiles\minttyrc
 
-del /Q %UserProfile%\.ssh\config
-mklink /H %UserProfile%\.ssh\config %UserProfile%\dotfiles\ssh\config
-
-del /Q %UserProfile%\.ssh\ssh_auto_add.sh
-mklink /H %UserProfile%\.ssh\ssh_auto_add.sh %UserProfile%\dotfiles\ssh\ssh_auto_add.sh
-
 del /Q %UserProfile%\.tmux.conf
 mklink /H %UserProfile%\.tmux.conf %UserProfile%\dotfiles\tmux.conf
 
