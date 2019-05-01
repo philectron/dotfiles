@@ -44,9 +44,5 @@ alias flip_umount='sudo umount ~/flip/ && rm -rf ~/flip/'
 # ssh to OSU OS1 server quickly
 alias os1='ssh -A -t flip ssh -A os1'
 
-# access MySQL command line client quickly
-alias dbmysql='mysql -h classmysql.engr.oregonstate.edu -u cs340_luuph -p \
-  cs340_luuph'
-
 # shorthand for re-attaching IRC client
 alias irc='ssh onid -t tmux a -t weechat'
