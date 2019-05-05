@@ -20,8 +20,7 @@
     "preserve_newlines": true,
     "unformatted": ["a", "abbr", "acronym", "b", "bdo", "big", "br", "button", "cite", "code", "dfn", "em", "i", "img", "input", "kbd", "label", "map", "object", "q", "samp", "script", "select", "small", "span", "strong", "sub", "sup", "textarea", "time", "tt", "var"],
     "wrap_attributes": "auto",
-    "wrap_attributes_indent_size": "force-aligned",
-    "wrap_line_length": 120
+    "wrap_attributes_indent_size": "force-aligned"
   },
   "js": {
     "brace_style": "collapse,preserve-inline",
