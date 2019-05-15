@@ -8,7 +8,7 @@ endif
 
 " enable filetype detection:
 filetype plugin indent on
-" remap <Leader> key
+" remap <leader> key
 let mapleader = ','
 
 "===============================================================================
@@ -89,7 +89,7 @@ set hls
 set showcmd
 
 " show more history
-set history=8193
+set history=8192
 
 " ignore case but not all-caps
 set ignorecase
@@ -115,10 +115,10 @@ set splitbelow
 set splitright
 
 " quicker split windows navigation
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-h> <C-w><C-h>
 
 " Ctrl + W + _ will max out the height of the current split
 " Ctrl + W + | will max out the width of the current split
@@ -165,8 +165,8 @@ let g:NERDTrimTrailingWhitespace = 1
 "=======================================
 " NERDTree
 "=======================================
-nnoremap <Leader>n :NERDTreeToggle<Enter>
-nnoremap <Leader>f :NERDTreeFind<Enter>
+nnoremap <leader>n :NERDTreeToggle<Enter>
+nnoremap <leader>f :NERDTreeFind<Enter>
 
 " open NERDTree when vim starts up with no file specified
 autocmd StdinReadPre * let s:std_in = 1
@@ -190,10 +190,10 @@ let g:syntastic_mode_map = {
   \ 'active_filetypes': [],
   \ 'passive_filetypes': []
 \}
-nnoremap <Leader>s :SyntasticCheck<CR>
-nnoremap <Leader>r :SyntasticReset<CR>
-nnoremap <Leader>i :SyntasticInfo<CR>
-nnoremap <Leader>m :SyntasticToggleMode<CR>
+nnoremap <leader>s :SyntasticCheck<CR>
+nnoremap <leader>r :SyntasticReset<CR>
+nnoremap <leader>i :SyntasticInfo<CR>
+nnoremap <leader>m :SyntasticToggleMode<CR>
 
 "=======================================
 " Vim-Airline
@@ -219,7 +219,7 @@ let g:closetag_emptyTags_caseSensitive = 1
 let g:closetag_shortcut = '>'
 
 " Add > at current position without closing the current tag, default is ''
-let g:closetag_close_shortcut = '<Leader>>'
+let g:closetag_close_shortcut = '<leader>>'
 
 "===============================================================================
 " Local customization
