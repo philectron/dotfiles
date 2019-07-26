@@ -39,6 +39,9 @@ mklink /J %UserProfile%\.vim %UserProfile%\dotfiles\vim
 del /Q %UserProfile%\.vimrc
 mklink /H %UserProfile%\.vimrc %UserProfile%\dotfiles\vimrc
 
+del /Q %UserProfile%\.zshrc
+mklink /H %UserProfile%\.zshrc %UserProfile%\dotfiles\zshrc
+
 rem Update all submodules recursively
 git submodule update --init --recursive
 
