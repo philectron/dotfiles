@@ -36,10 +36,10 @@ alias valgrind='valgrind --leak-check=full --show-leak-kinds=all \
   --track-origins=yes'
 
 # mount OSU Flip server to ~/flip/ quickly
-alias flip_mount='mkdir -p ~/flip/ \
+alias flip_mount="mkdir -p ${HOME}/flip/ \
   && sshfs -o allow_other \
-  luuph@flip.engr.oregonstate.edu:/nfs/stak/users/luuph/ ~/flip/'
-alias flip_umount='sudo umount ~/flip/ && rm -rf ~/flip/'
+  luuph@flip.engr.oregonstate.edu:/nfs/stak/users/luuph/ ${HOME}/flip/"
+alias flip_umount="sudo umount ${HOME}/flip/ && rm -rf ${HOME}/flip/"
 
 # ssh to OSU OS1 server quickly
 alias os1='ssh -A -t onid ssh -A os1'

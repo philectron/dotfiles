@@ -1,6 +1,6 @@
 # system related
-export PATH="${PATH}:~/.local/bin"
-export PATH="${PATH}:~/bin"
+export PATH="${PATH}:${HOME}/.local/bin"
+export PATH="${PATH}:${HOME}/bin"
 
 # others (additional PATHs should go before pwd)
 export PATH="${PATH}:."

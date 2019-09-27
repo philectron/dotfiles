@@ -4,7 +4,7 @@
 # Auto start SSH Agent and add keys
 ########################################
 
-SSH_ENV=~/.ssh/agent.env
+SSH_ENV=${HOME}/.ssh/agent.env
 
 agent_load_env() {
   test -f "${SSH_ENV}" && . "${SSH_ENV}" > /dev/null
@@ -18,7 +18,7 @@ agent_start() {
 # for now only works for  KEY  and  KEY.pub  pairs
 agent_add_keys() {
   # find all  .pub  files in  ~/.ssh  directory
-  local public_keys=("$(find ~/.ssh -maxdepth 1 -type f -iname "*.pub" \
+  local public_keys=("$(find ${HOME}/.ssh -maxdepth 1 -type f -iname "*.pub" \
     -exec basename {} \;)")
 
   for key in ${public_keys[@]}; do
@@ -26,8 +26,8 @@ agent_add_keys() {
     local key_name="${key%.*}"
 
     # ensure there exists a readable private key with the same name
-    if [[ -f ~/.ssh/"${key_name}" ]]; then
-      ssh-add ~/.ssh/"${key_name}" 2> /dev/null
+    if [[ -f ${HOME}/.ssh/"${key_name}" ]]; then
+      ssh-add ${HOME}/.ssh/"${key_name}" 2> /dev/null
     fi
   done
 }

@@ -5,7 +5,7 @@ export PAGER=less
 
 # bash_history configuration
 shopt -s histappend
-export HISTFILE=~/.bash_history
+export HISTFILE=${HOME}/.bash_history
 export HISTTIMEFORMAT="%F %T: " # 33916  2017-12-30 17:12:20 echo foo
 export HISTCONTROL=ignoreboth
 export HISTIGNORE="ls:bg:fg:clear:history"
