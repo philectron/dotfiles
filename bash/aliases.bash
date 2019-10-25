@@ -42,7 +42,7 @@ alias flip_mount="mkdir -p ${HOME}/flip/ \
 alias flip_umount="sudo umount ${HOME}/flip/ && rm -rf ${HOME}/flip/"
 
 # ssh to OSU OS1 server quickly
-alias os1='ssh -A -t onid ssh -A os1'
+alias os1='ssh -A -t flip3 ssh -A os1'
 
 # shorthand for re-attaching IRC client
-alias irc='ssh onid -t tmux a -t weechat'
+alias irc='ssh flip3 -t tmux a -t weechat'
