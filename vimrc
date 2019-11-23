@@ -36,8 +36,10 @@ set showmatch
 " don't wrap lines
 set nowrap
 
-" always show relative line numbers
+" always show relative line numbers on other lines
 set relativenumber
+" and absolute number on the current line
+set number
 
 " always show the current editing mode
 set showmode
