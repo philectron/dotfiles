@@ -2,7 +2,7 @@
 export ZSH="${HOME}/.oh-my-zsh"
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME='sunaku'
+ZSH_THEME='agnoster'
 
 # Use case-sensitive completion if true
 CASE_SENSITIVE='false'
