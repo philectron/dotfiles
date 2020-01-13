@@ -16,6 +16,7 @@
     ~/.inputrc:
     ~/.jsbeautifyrc:
     ~/.minttyrc:
+    ~/.shell:
     ~/.tmux.conf:
     ~/.uncrustifyrc:
     ~/.vim:

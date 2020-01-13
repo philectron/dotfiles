@@ -21,25 +21,19 @@ alias rm='rm -i'
 alias mv='mv -i'
 
 # ps processes ran by ${USER}
-alias psme="ps -o ppid,pid,euser,stat,%cpu,rss,args | head -n 1; \
-  ps -eH -o ppid,pid,euser,stat,%cpu,rss,args | grep ${USER}"
+alias psme='ps -o ppid,pid,euser,stat,%cpu,rss,args | head -n 1; ps -eH -o ppid,pid,euser,stat,%cpu,rss,args | grep ${USER}'
 stty erase '^?'
 
 # add an "alert" alias for long running commands.
 # use like so: sleep 10; alert
-alias alert='notify-send --urgency=low -i \
-  "$([ $? = 0 ] && echo terminal || echo error)" \
-  "$(history | tail -n1 | sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history | tail -n1 | sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
 # shorthand for a more detailed leak check valgrind
-alias valgrind='valgrind --leak-check=full --show-leak-kinds=all \
-  --track-origins=yes'
+alias valgrind='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
 
 # mount OSU Flip server to ~/flip/ quickly
-alias flip_mount="mkdir -p ${HOME}/flip/ \
-  && sshfs -o allow_other \
-  luuph@flip.engr.oregonstate.edu:/nfs/stak/users/luuph/ ${HOME}/flip/"
-alias flip_umount="sudo umount ${HOME}/flip/ && rm -rf ${HOME}/flip/"
+alias flip_mount='mkdir -p ${HOME}/flip/ && sshfs -o allow_other luuph@flip.engr.oregonstate.edu:/nfs/stak/users/luuph/ ${HOME}/flip/'
+alias flip_umount='sudo umount ${HOME}/flip/ && rm -rf ${HOME}/flip/'
 
 # ssh to OSU OS1 server quickly
 alias os1='ssh -A -t flip3 ssh -A os1'

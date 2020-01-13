@@ -1,8 +1,6 @@
 # system related
-export PATH="${PATH}:${HOME}/.local/bin"
-export PATH="${PATH}:${HOME}/bin"
-
-# others (additional PATHs should go before pwd)
+export PATH="${HOME}/.local/bin:${PATH}"
+export PATH="${HOME}/bin:${PATH}"
 export PATH="${PATH}:."
 
 # make python use UTF-8 encoding for output to stdin, stdout, stderr
