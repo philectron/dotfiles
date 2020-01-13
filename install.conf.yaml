@@ -7,7 +7,7 @@
 
 - link:
     # ~/.dotfiles: <path to custom .dotfiles location if not at $HOME>
-    ~/.shell:
+    ~/.bash:
     ~/.bash_profile:
     ~/.bashrc:
     ~/.clang-format:
