@@ -21,6 +21,7 @@
     ~/.uncrustifyrc:
     ~/.vim:
     ~/.vimrc:
+    ~/.zsh:
     ~/.zshrc:
 
 - shell:

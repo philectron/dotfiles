@@ -42,6 +42,9 @@ mklink /J %UserProfile%\.vim %UserProfile%\dotfiles\vim
 del /Q %UserProfile%\.vimrc
 mklink /H %UserProfile%\.vimrc %UserProfile%\dotfiles\vimrc
 
+rmdir /S /Q %UserProfile%\.zsh
+mklink /J %UserProfile%\.zsh %UserProfile%\dotfiles\zsh
+
 del /Q %UserProfile%\.zshrc
 mklink /H %UserProfile%\.zshrc %UserProfile%\dotfiles\zshrc
 
