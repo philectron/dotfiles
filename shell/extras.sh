@@ -27,8 +27,7 @@ agent_start() {
 # for now only works for  KEY  and  KEY.pub  pairs
 agent_add_keys() {
   # find all  .pub  files in  ~/.ssh  directory
-  local public_keys=("$(find ${HOME}/.ssh -maxdepth 1 -type f -iname "*.pub" \
-    -exec basename {} \;)")
+  local public_keys=($(find ${HOME}/.ssh -maxdepth 1 -type f -iname "*.pub" -exec basename {} \;))
 
   for key in ${public_keys[@]}; do
     # get the key's name without extension
