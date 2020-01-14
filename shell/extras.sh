@@ -16,7 +16,7 @@ umask 0022
 SSH_ENV=${HOME}/.ssh/agent.env
 
 agent_load_env() {
-  test -f "${SSH_ENV}" && . "${SSH_ENV}" > /dev/null
+  [ -f "${SSH_ENV}" ] && . "${SSH_ENV}" > /dev/null
 }
 
 agent_start() {
@@ -27,15 +27,17 @@ agent_start() {
 # for now only works for  KEY  and  KEY.pub  pairs
 agent_add_keys() {
   # find all  .pub  files in  ~/.ssh  directory
-  local public_keys=($(find ${HOME}/.ssh -maxdepth 1 -type f -iname "*.pub" -exec basename {} \;))
+  local public_keys=()
+  while read -r line; do
+    line="${line##*/}"
+    line="${line%.*}"
+    public_keys+=( "${line}" )
+  done < <("ls" "${HOME}"/.ssh/*.pub)
 
-  for key in ${public_keys[@]}; do
-    # get the key's name without extension
-    local key_name="${key%.*}"
-
+  for key in "${public_keys[@]}"; do
     # ensure there exists a readable private key with the same name
-    if [ -f ${HOME}/.ssh/"${key_name}" ]; then
-      ssh-add ${HOME}/.ssh/"${key_name}" 2> /dev/null
+    if [ -f "${HOME}"/.ssh/"${key}" ]; then
+      ssh-add "${HOME}"/.ssh/"${key}" 2> /dev/null
     fi
   done
 }
