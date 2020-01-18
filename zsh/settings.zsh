@@ -1,3 +1,7 @@
+#
+# Zsh main settings
+#
+
 export ZSH="${HOME}/.oh-my-zsh"
 
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -38,6 +42,23 @@ COMPLETION_WAITING_DOTS='true'
 # this makes repository status check for large repositories much, much faster
 DISABLE_UNTRACKED_FILES_DIRTY='true'
 
+# Change the command execution time stamp shown in the history command output
+HIST_STAMPS='%F %T'  # yyyy-mm-dd HH:MM:SS
+
+# Define the storing location of Zsh history
+HISTFILE="${HOME}/.zsh_history"
+
+# Ignore the following commands in history
+HISTORY_IGNORE="(ls|bg|fg|clear|history)"
+
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt INC_APPEND_HISTORY
+
+# Set a custom size of the history
+HISTSIZE=1000000
+SAVEHIST=1000000
+
 # Plugins:
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -45,34 +66,14 @@ DISABLE_UNTRACKED_FILES_DIRTY='true'
 # Add wisely, as too many plugins slow down shell startup
 plugins=(git)
 
-# Manually set the language environment
+# Must load Oh-My-Zsh here
+source ${ZSH}/oh-my-zsh.sh
+
+export EDITOR='vim'
 export LANG='en_US.UTF-8'
 export LESS='QMcdR'
 export MORE='-c'
 export PAGER='less'
 
-# Preferred editor for local and remote sessions
-if [ -n ${SSH_CONNECTION} ]; then
-  export EDITOR='vim'
-else
-  export EDITOR='mvim'
-fi
-
-# zsh_history configuration
-setopt HIST_IGNORE_DUPS
-setopt HIST_IGNORE_SPACE
-setopt INC_APPEND_HISTORY
-HISTFILE="${HOME}/.zsh_history"
-HISTORY_IGNORE="(ls|bg|fg|clear|history)"
-HISTSIZE=1000000
-HIST_STAMPS='%F %T'  # yyyy-mm-dd HH:MM:SS
-SAVEHIST=1000000
-
-# Highlight section titles in man page
-export LESS_TERMCAP_md="${yellow}"
-
 # Don't clear the screen after quiting a man page
 export MANPAGER='less -X'
-
-# Must load Oh-My-Zsh last
-source ${ZSH}/oh-my-zsh.sh

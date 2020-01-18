@@ -21,9 +21,6 @@ export PROMPT_COMMAND="history -a;${PROMPT_COMMAND}"
 export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
 
-# Highlight section titles in man page
-export LESS_TERMCAP_md="${yellow}"
-
 # Don't clear the screen after quiting a man page
 export MANPAGER='less -X'
 
