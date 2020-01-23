@@ -13,6 +13,6 @@ prompt_end_previous_segment() {
 prompt_end() {
   prompt_end_previous_segment
   printf "\n "
-  prompt_segment 'blue' 'black' '$'
+  prompt_segment 'blue' 'black' ' (づ｡◕‿‿◕｡)づ '
   prompt_end_previous_segment
 }
