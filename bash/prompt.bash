@@ -105,7 +105,7 @@ if [[ "${OSTYPE}" == 'linux-gnu' ]]; then
 fi
 
 # put '$' on the next line, use '...' for long Directory path, and export
-PS1+="\[${WHITE}\]\n\$"
+PS1+="\[${BLUE}\]\n(づ｡◕‿‿◕｡)づ"
 PS1+="\[${RESET}\] "
 PROMPT_DIRTRIM=5
 export PS1
