@@ -35,8 +35,8 @@ alias valgrind='valgrind --leak-check=full --show-leak-kinds=all --track-origins
 alias flip_mount='mkdir -p ${HOME}/flip/ && sshfs -o allow_other luuph@flip.engr.oregonstate.edu:/nfs/stak/users/luuph/ ${HOME}/flip/'
 alias flip_umount='sudo umount ${HOME}/flip/ && rm -rf ${HOME}/flip/'
 
-# ssh to OSU OS1 server quickly
-alias os1='ssh -A -t flip3 ssh -A os1'
+# ssh to OSU OS2 server quickly
+alias os2='ssh -A -t flip3 ssh -A os2'
 
 # shorthand for re-attaching IRC client
 alias irc='ssh flip3 -t tmux a -t weechat'
