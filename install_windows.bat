@@ -27,9 +27,6 @@ mklink /H %UserProfile%\.jsbeautifyrc %UserProfile%\dotfiles\jsbeautifyrc
 del /Q %UserProfile%\.minttyrc
 mklink /H %UserProfile%\.minttyrc %UserProfile%\dotfiles\minttyrc
 
-rmdir /S /Q %UserProfile%\.shell
-mklink /J %UserProfile%\.shell %UserProfile%\dotfiles\shell
-
 del /Q %UserProfile%\.tmux.conf
 mklink /H %UserProfile%\.tmux.conf %UserProfile%\dotfiles\tmux.conf
 

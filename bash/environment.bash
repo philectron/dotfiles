@@ -17,4 +17,5 @@ export PATH="${HOME}/gems/bin:${PATH}"
 export PATH="${HOME}/.cargo/bin:${PATH}"
 
 # haskell
-[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
+[[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ]] && \
+  source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
