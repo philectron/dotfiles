@@ -1,3 +1,3 @@
-# File containing private env var of this shell and so should not be published
-private.bash
-private.zsh
+# Files containing private scripts that shall not be published
+bash/private.bash
+zsh/private.zsh
