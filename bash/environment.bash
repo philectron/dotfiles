@@ -3,6 +3,9 @@ export PATH="${HOME}/.local/bin:${PATH}"
 export PATH="${HOME}/bin:${PATH}"
 export PATH="${PATH}:."
 
+# tmux
+export TMUX_VERSION="$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")"
+
 # make python use UTF-8 encoding for output to stdin, stdout, stderr
 export PYTHONIOENCODING='UTF-8'
 
