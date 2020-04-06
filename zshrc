@@ -9,4 +9,4 @@ source ${HOME}/.bash/aliases.bash
 source ${HOME}/.bash/theme.bash
 source ${HOME}/.bash/functions.bash
 source ${HOME}/.bash/extras.bash
-source ${HOME}/.zsh/private.zsh
+[[ -f "${HOME}/.zsh/private.zsh" ]] && source ${HOME}/.zsh/private.zsh
