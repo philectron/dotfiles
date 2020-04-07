@@ -47,7 +47,7 @@ agent_load_env
 # 0 = running with keys, 1 = running without keys, 2 = not running
 agent_run_state=$(ssh-add -l > /dev/null 2>&1; echo $?)
 
-if [[ ! "${SSH_AUTH_SOCK}" || "${agent_run_state}" -eq 2 ]]; then
+if [[ -n "${SSH_AUTH_SOCK}" || "${agent_run_state}" -eq 2 ]]; then
   agent_start && agent_add_keys
 else
   agent_add_keys
