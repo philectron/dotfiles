@@ -8,6 +8,7 @@ endif
 
 " enable filetype detection:
 filetype plugin indent on
+
 " remap <leader> key
 let mapleader = ','
 
@@ -36,9 +37,7 @@ set showmatch
 " don't wrap lines
 set nowrap
 
-" always show relative line numbers on other lines
-set relativenumber
-" and absolute number on the current line
+" show aboslute line numbers
 set number
 
 " always show the current editing mode
@@ -49,7 +48,7 @@ set colorcolumn=80,100,120,255
 highlight ColorColumn ctermbg=7 guibg=lightgrey
 
 "===============================================================================
-" Formatting
+" Editor
 "===============================================================================
 
 " always set auto-indenting on
@@ -74,9 +73,8 @@ set tabstop=4
 " pressing F5 will remove all trailing whitespace
 nnoremap <F5> :let _s = @/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:noh<Bar><CR>
 
-"===============================================================================
-" Editing
-"===============================================================================
+" turn off auto-commenting
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -97,16 +95,18 @@ set history=8192
 set ignorecase
 set smartcase
 
-" Ctrl + C will copy selected visual to clipboard
-vnoremap <C-c> "+y
-
-" Ctrl + V will paste and indent
-nnoremap <C-v> "+p=`]
+" toggle the 'paste' option so indentation doesn't get messed up on pasting from
+" terminal; use this by <F2>, then paste the code, then <F2> again
+set pastetoggle=<F2>
 
 " Ctrl + S will save
 noremap <silent> <C-s> :update<CR>
 vnoremap <silent> <C-s> <C-c>:update<CR>
 inoremap <silent> <C-s> <C-o>:update<CR>
+
+" Move across wrapped line when softwrap is on, otherwise move normally
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
 
 "===============================================================================
 " Windows
@@ -152,7 +152,8 @@ let g:NERDSpaceDelims = 1
 " use compact syntax for prettified multi-line comments
 let g:NERDCompactSexyComs = 1
 
-" align line-wise comment delimiters flush left instead of following code indentation
+" align line-wise comment delimiters flush left instead of following code
+" indentation
 let g:NERDDefaultAlign = 'left'
 
 " set a language to use its alternate delimiters by default
@@ -207,14 +208,16 @@ let g:airline_theme = 'base16'
 "=======================================
 " filenames like *.xml, *.html, *.xhtml, ...
 " These are the file extensions where this plugin is enabled.
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.handlebars'
+let g:closetag_filenames = '*.cshtml,*.html,*.js,*.jsx,*.xhtml'
 
 " filenames like *.xml, *.xhtml, ...
-" This will make the list of non-closing tags self-closing in the specified files.
-let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+" This will make the list of non-closing tags self-closing in the specified
+" files.
+let g:closetag_xhtml_filenames = '*.cshtml,*.html,*.js,*.jsx,*.xhtml'
 
 " integer value [0|1]
-" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.)
+" This will make the list of non-closing tags case-sensitive (e.g. `<Link>`
+" will be closed while `<link>` won't.)
 let g:closetag_emptyTags_caseSensitive = 1
 
 " Shortcut for closing tags, default is '>'

@@ -13,3 +13,4 @@ setlocal tabstop=4
 
 " turn on soft word wrap
 setlocal wrap
+setlocal linebreak
