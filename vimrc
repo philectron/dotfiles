@@ -76,6 +76,9 @@ nnoremap <F5> :let _s = @/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:noh<Bar><CR>
 " turn off auto-commenting
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
+" use // instead of /* */ for c-like language commenting
+autocmd FileType c,cpp,cs setlocal commentstring=//\ %s
+
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 
@@ -99,12 +102,12 @@ set smartcase
 " terminal; use this by <F2>, then paste the code, then <F2> again
 set pastetoggle=<F2>
 
-" Ctrl + S will save
+" ctrl + s will save
 noremap <silent> <C-s> :update<CR>
 vnoremap <silent> <C-s> <C-c>:update<CR>
 inoremap <silent> <C-s> <C-o>:update<CR>
 
-" Move across wrapped line when softwrap is on, otherwise move normally
+" move across wrapped line when softwrap is on, otherwise move normally
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
