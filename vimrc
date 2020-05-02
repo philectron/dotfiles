@@ -51,33 +51,9 @@ highlight ColorColumn ctermbg=7 guibg=lightgrey
 " Editor
 "===============================================================================
 
-" always set auto-indenting on
-set autoindent
-
-" copy the previous indentation on auto-indenting
-set copyindent
-
-" on pressing tab, insert spaces
-set expandtab
-
-" when indenting with tab, use 4-space width
-set shiftwidth=4
-set smarttab
-
-" when hitting backspace, pretend like a tab is removed, even if spaces
-set softtabstop=4
-
-" a tab is 4 spaces
-set tabstop=4
-
-" pressing F5 will remove all trailing whitespace
-nnoremap <F5> :let _s = @/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:noh<Bar><CR>
-
-" turn off auto-commenting
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-
-" use // instead of /* */ for c-like language commenting
-autocmd FileType c,cpp,cs setlocal commentstring=//\ %s
+"=======================================
+" General
+"=======================================
 
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
@@ -98,18 +74,81 @@ set history=8192
 set ignorecase
 set smartcase
 
-" toggle the 'paste' option so indentation doesn't get messed up on pasting from
-" terminal; use this by <F2>, then paste the code, then <F2> again
-set pastetoggle=<F2>
+" move across wrapped line when softwrap is on, otherwise move normally
+nnoremap <expr> j v:count ? 'j' : 'gj'
+nnoremap <expr> k v:count ? 'k' : 'gk'
 
 " ctrl + s will save
 noremap <silent> <C-s> :update<CR>
 vnoremap <silent> <C-s> <C-c>:update<CR>
 inoremap <silent> <C-s> <C-o>:update<CR>
 
-" move across wrapped line when softwrap is on, otherwise move normally
-nnoremap <expr> j v:count ? 'j' : 'gj'
-nnoremap <expr> k v:count ? 'k' : 'gk'
+" pressing F5 will remove all trailing whitespace
+nnoremap <F5> :let _s = @/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:noh<Bar><CR>
+
+"=======================================
+" Indentation
+"=======================================
+
+" always set auto-indenting on
+set autoindent
+
+" copy the previous indentation on auto-indenting
+set copyindent
+
+" on pressing tab, insert spaces
+set expandtab
+
+" when indenting with tab, use 4-space width
+set shiftwidth=4
+set smarttab
+
+" when hitting backspace, pretend like a tab is removed, even if spaces
+set softtabstop=4
+
+" a tab is 4 spaces
+set tabstop=4
+
+"=======================================
+" File-specific settings
+"=======================================
+
+" turn off auto-commenting
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
+" use // instead of /* */ for c-like language commenting
+autocmd FileType c,cpp,cs setlocal commentstring=//\ %s
+
+"=======================================
+" Automatically toggle the `paste` option on pasting
+" source: https://coderwall.com/p/if9mda/automatically-set-paste-mode-in-vim-when-pasting-in-insert-mode
+"=======================================
+
+" fallback toggle in case this trick doesn't work
+" usage: Toggle -> Paste -> Toggle
+set pastetoggle=<F2>
+
+function! WrapForTmux(s)
+  if !exists('$TMUX')
+    return a:s
+  endif
+
+  let tmux_start = "\<Esc>Ptmux;"
+  let tmux_end = "\<Esc>\\"
+
+  return tmux_start . substitute(a:s, "\<Esc>", "\<Esc>\<Esc>", 'g') . tmux_end
+endfunction
+
+let &t_SI .= WrapForTmux("\<Esc>[?2004h")
+let &t_EI .= WrapForTmux("\<Esc>[?2004l")
+
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
 "===============================================================================
 " Windows
