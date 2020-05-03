@@ -47,6 +47,9 @@ set showmode
 set colorcolumn=80,100,120,255
 highlight ColorColumn ctermbg=7 guibg=lightgrey
 
+" highlight current line
+set cursorline
+
 "===============================================================================
 " Editor
 "===============================================================================
