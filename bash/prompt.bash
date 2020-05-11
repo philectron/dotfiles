@@ -91,24 +91,47 @@ prompt_git() {
   fi
 }
 
-# basic prompt: 'User at Host in Directory'
-PS1="\[${BOLD}${MAGENTA}\]\u"
-PS1+="\[${WHITE}\] at "
-PS1+="\[${BOLD}${GREEN}\]\h"
-PS1+="\[${WHITE}\] in "
-PS1+="\[${BOLD}${YELLOW}\]\w"
+# customize PS1 to 'User at Host in Directory'
+PS1=''
+PS1+="${BOLD}${ORANGE}\u"  # user
+PS1+="${RESET} "
+PS1+="${WHITE}at"
+PS1+="${RESET} "
+PS1+="${BOLD}${GREEN}\h"   # host
+PS1+="${RESET} "
+PS1+="${WHITE}in"
+PS1+="${RESET} "
+PS1+="${BOLD}${YELLOW}\w"  # directory
 
-# somehow, this method to make Git prompt doesn't work on Windows
+# this Git prompt function doesn't work on Windows Git Bash
 if [[ "${OSTYPE}" == 'linux-gnu' ]]; then
   # if in a git repository, concatenate ' on Branch [Status]' into the prompt
-  PS1+="\$(prompt_git \"\[${WHITE}\] on \[${BOLD}${PURPLE}\]\")"
+  gitprompt="${RESET} ${WHITE}on${RESET} ${BOLD}${PURPLE}"
+  PS1+="\$(prompt_git \"${gitprompt}\")"
 fi
 
-# put '$' on the next line, use '...' for long Directory path, and export
-PS1+="\[${BLUE}\]\n(づ｡◕‿‿◕｡)づ"
-PS1+="\[${RESET}\] "
+# put command prompt on the next line and use '...' for long directory path
+PS1+="${RESET}\n"
+PS1+="${BLUE}(づ｡◕‿‿◕｡)づ"
+PS1+="${RESET} "
 PROMPT_DIRTRIM=5
-export PS1
 
-PS2="\[${BOLD}${YELLOW}\]→ \[${RESET}\]"
+# customize PS2
+PS2=''
+PS2+="${YELLOW}(☞ﾟヮﾟ)☞"
+PS2+="${RESET} "
+
+# customize PS3
+PS3=''
+PS3+="${CYAN}Select an option:"
+PS3+="${RESET} "
+
+# customize PS4
+PS4=''
+PS4+="${PURPLE}$0:${LINENO}:";
+PS4+="${RESET} "
+
+export PS1
 export PS2
+export PS3
+export PS4
