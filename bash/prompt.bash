@@ -1,8 +1,5 @@
-#!/usr/bin/env bash
-
 # Sexy Bash Prompt, inspired by "Extravagant Zsh Prompt"
 # a big thanks to \amethyst on Freenode
-
 if [[ ${COLORTERM} = gnome-* && ${TERM} = xterm ]] \
   && infocmp gnome-256color >/dev/null 2>&1; then
   TERM=gnome-256color
@@ -14,38 +11,55 @@ fi
 # https://github.com/chriskempson/tomorrow-theme#tomorrow-night
 if tput setaf 1 &>/dev/null; then
   tput sgr0
-  if [[ $(tput colors) -ge 256 ]] 2>/dev/null; then
-    MAGENTA=$(tput setaf 167)
-    ORANGE=$(tput setaf 173)
-    GREEN=$(tput setaf 143)
-    PURPLE=$(tput setaf 139)
-    WHITE=$(tput setaf 15)
-    BLUE=$(tput setaf 110)
-    CYAN=$(tput setaf 109)
-    YELLOW=$(tput setaf 222)
-    RED=$(tput setaf 167)
-  else
-    MAGENTA=$(tput setaf 5)
-    ORANGE=$(tput setaf 4)
-    GREEN=$(tput setaf 2)
-    PURPLE=$(tput setaf 1)
-    WHITE=$(tput setaf 7)
-  fi
-  BOLD=$(tput bold)
-  RESET=$(tput sgr0)
+
+  BLACK="$(tput setaf 0)"
+  RED="$(tput setaf 1)"
+  GREEN="$(tput setaf 2)"
+  YELLOW="$(tput setaf 3)"
+  BLUE="$(tput setaf 4)"
+  MAGENTA="$(tput setaf 5)"
+  CYAN="$(tput setaf 6)"
+  WHITE="$(tput setaf 15)"
+
+  # ANSI escapes can't concatenate 'bold' and 'color', so
+  # define the bold colors here in case tput isn't available
+  BOLD="$(tput bold)"
+  BOLD_BLACK="${BOLD}${BLACK}"
+  BOLD_RED="${BOLD}${RED}"
+  BOLD_GREEN="${BOLD}${GREEN}"
+  BOLD_YELLOW="${BOLD}${YELLOW}"
+  BOLD_BLUE="${BOLD}${BLUE}"
+  BOLD_MAGENTA="${BOLD}${MAGENTA}"
+  BOLD_CYAN="${BOLD}${CYAN}"
+  BOLD_WHITE="${BOLD}${WHITE}"
+
+  RESET="$(tput sgr0)"
 else
-  MAGENTA="\033[1;31m"
-  ORANGE="\033[1;33m"
-  GREEN="\033[1;32m"
-  PURPLE="\033[1;35m"
-  WHITE="\033[1;37m"
-  BOLD=""
-  RESET="\033[m"
+  BLACK="\033[0;30m"
+  RED="\033[0;31m"
+  GREEN="\033[0;32m"
+  YELLOW="\033[0;33m"
+  BLUE="\033[0;34m"
+  MAGENTA="\033[0;35m"
+  CYAN="\033[0;36m"
+  WHITE="\033[0;37m"
+
+  BOLD="\033[1m"
+  BOLD_BLACK="\033[1;30m"
+  BOLD_RED="\033[1;31m"
+  BOLD_GREEN="\033[1;32m"
+  BOLD_YELLOW="\033[1;33m"
+  BOLD_BLUE="\033[1;34m"
+  BOLD_MAGENTA="\033[1;35m"
+  BOLD_CYAN="\033[1;36m"
+  BOLD_WHITE="\033[1;37m"
+
+  RESET="\033[0m"
 fi
 
 prompt_git() {
   local s=''
-  local branchName=''
+  local branch=''
 
   # check if the current directory is in a Git repository
   if [[ $(git rev-parse --is-inside-work-tree &>/dev/null; \
@@ -79,13 +93,13 @@ prompt_git() {
     # get the short symbolic ref.
     # if HEAD isn’t a symbolic ref, get the short SHA for the latest commit
     # otherwise, just give up.
-    branchName="$(git symbolic-ref --quiet --short HEAD 2>/dev/null \
+    branch="$(git symbolic-ref --quiet --short HEAD 2>/dev/null \
       || git rev-parse --short HEAD 2>/dev/null \
       || echo '(unknown)')"
 
     [[ -n "${s}" ]] && s=" [${s}]"
 
-    echo -e "${1}${branchName}${2}${s}"
+    echo -e "${1}${branch}${2}${s}"
   else
     return
   fi
@@ -93,28 +107,36 @@ prompt_git() {
 
 # customize PS1 to 'User at Host in Directory'
 PS1=''
-PS1+="${BOLD}${ORANGE}\u"  # user
+PS1+="${BOLD_RED}\u"  # user
 PS1+="${RESET} "
 PS1+="${WHITE}at"
 PS1+="${RESET} "
-PS1+="${BOLD}${GREEN}\h"   # host
+PS1+="${BOLD_GREEN}\h"   # host
 PS1+="${RESET} "
 PS1+="${WHITE}in"
 PS1+="${RESET} "
-PS1+="${BOLD}${YELLOW}\w"  # directory
+PS1+="${BOLD_YELLOW}\w"  # directory
 
 # this Git prompt function doesn't work on Windows Git Bash
 if [[ "${OSTYPE}" == 'linux-gnu' ]]; then
-  # if in a git repository, concatenate ' on Branch [Status]' into the prompt
-  gitprompt="${RESET} ${WHITE}on${RESET} ${BOLD}${PURPLE}"
-  PS1+="\$(prompt_git \"${gitprompt}\")"
+  # if in a git repository, append ' on Branch [Status]' to the prompt
+  ps1_git="${RESET} ${WHITE}on${RESET} ${BOLD_MAGENTA}"
+  PS1+="\$(prompt_git \"${ps1_git}\")"
 fi
 
-# put command prompt on the next line and use '...' for long directory path
+# put command prompt on the next line
 PS1+="${RESET}\n"
 PS1+="${BLUE}(づ｡◕‿‿◕｡)づ"
 PS1+="${RESET} "
+
+# trim long directory paths to '...'
 PROMPT_DIRTRIM=5
+
+# prepend an 'X' symbol to PS1 if previous command returns non-zero, and
+# remove the symbol if previous command returns zero
+ps1_full="${PS1}"  # keep track of the latest PS1 to revert it on zero return
+ps1_err="${BOLD_RED}✗${RESET} ${PS1}"
+PROMPT_COMMAND='[[ "$(echo $?)" -ne 0 ]] && PS1="${ps1_err}" || PS1="${ps1_full}"'
 
 # customize PS2
 PS2=''
@@ -123,13 +145,15 @@ PS2+="${RESET} "
 
 # customize PS3
 PS3=''
-PS3+="${CYAN}Select an option:"
+PS3+="${MAGENTA}Select an option:"
 PS3+="${RESET} "
 
 # customize PS4
 PS4=''
-PS4+="${PURPLE}$0:${LINENO}:";
-PS4+="${RESET} "
+PS4+="${CYAN}\$0"
+PS4+="${RESET}:"
+PS4+="${GREEN}\${LINENO}"
+PS4+="${RESET}: "
 
 export PS1
 export PS2
