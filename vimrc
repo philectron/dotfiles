@@ -189,6 +189,15 @@ elseif !exists('g:colors_name') || g:colors_name != 'base16-tomorrow-night'
 endif
 
 "=======================================
+" indentLine
+"=======================================
+" enable this plugin on startup
+let g:indentLine_enabled = 1
+
+" character to show as indent guide
+let g:indentLine_char = '│'
+
+"=======================================
 " NERDTree
 "=======================================
 nnoremap <leader>n :NERDTreeToggle<Enter>
