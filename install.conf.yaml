@@ -10,14 +10,11 @@
     ~/.bash:
     ~/.bash_profile:
     ~/.bashrc:
-    ~/.clang-format:
     ~/.gitconfig:
     ~/.gitignore_global:
     ~/.inputrc:
-    ~/.jsbeautifyrc:
     ~/.minttyrc:
     ~/.tmux.conf:
-    ~/.uncrustifyrc:
     ~/.vim:
     ~/.vimrc:
     ~/.zsh:
