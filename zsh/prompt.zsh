@@ -19,20 +19,20 @@ prompt_end() {
 
 # customize PS2
 PS2=''
-PS2+="${YELLOW}(☞ﾟヮﾟ)☞"
-PS2+="${RESET} "
+PS2+="\[${YELLOW}\](☞ﾟヮﾟ)☞"
+PS2+="\[${RESET}\] "
 
 # customize PS3
 PS3=''
-PS3+="${MAGENTA}Select an option:"
-PS3+="${RESET} "
+PS3+="\[${MAGENTA}\]Select an option:"
+PS3+="\[${RESET}\] "
 
 # customize PS4
 PS4=''
-PS4+="${CYAN}\$0"
-PS4+="${RESET}:"
-PS4+="${GREEN}\${LINENO}"
-PS4+="${RESET}: "
+PS4+="\[${CYAN}\]\$0"
+PS4+="\[${RESET}\]:"
+PS4+="\[${GREEN}\]\${LINENO}"
+PS4+="\[${RESET}\]: "
 
 export PS2
 export PS3

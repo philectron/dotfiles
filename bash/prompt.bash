@@ -48,27 +48,27 @@ prompt_git() {
 
 # customize PS1 to 'User at Host in Directory'
 PS1=''
-PS1+="${BOLD_RED}\u"  # user
-PS1+="${RESET} "
-PS1+="${WHITE}at"
-PS1+="${RESET} "
-PS1+="${BOLD_GREEN}\h"   # host
-PS1+="${RESET} "
-PS1+="${WHITE}in"
-PS1+="${RESET} "
-PS1+="${BOLD_YELLOW}\w"  # directory
+PS1+="\[${BOLD_RED}\]\u"  # user
+PS1+="\[${RESET}\] "
+PS1+="\[${WHITE}\]at"
+PS1+="\[${RESET}\] "
+PS1+="\[${BOLD_GREEN}\]\h"   # host
+PS1+="\[${RESET}\] "
+PS1+="\[${WHITE}\]in"
+PS1+="\[${RESET}\] "
+PS1+="\[${BOLD_YELLOW}\]\w"  # directory
 
 # this Git prompt function doesn't work on Windows Git Bash
 if [[ "${OSTYPE}" == 'linux-gnu' ]]; then
   # if in a git repository, append ' on Branch [Status]' to the prompt
-  ps1_git="${RESET} ${WHITE}on${RESET} ${BOLD_MAGENTA}"
+  ps1_git="\[${RESET}\] \[${WHITE}\]on\[${RESET}\] \[${BOLD_MAGENTA}\]"
   PS1+="\$(prompt_git \"${ps1_git}\")"
 fi
 
 # put command prompt on the next line
-PS1+="${RESET}\n"
-PS1+="${BLUE}(づ｡◕‿‿◕｡)づ"
-PS1+="${RESET} "
+PS1+="\[${RESET}\]\n"
+PS1+="\[${BLUE}\](づ｡◕‿‿◕｡)づ"
+PS1+="\[${RESET}\] "
 
 # trim long directory paths to '...'
 PROMPT_DIRTRIM=5
@@ -76,25 +76,25 @@ PROMPT_DIRTRIM=5
 # prepend an 'X' symbol to PS1 if previous command returns non-zero, and
 # remove the symbol if previous command returns zero
 ps1_full="${PS1}"  # keep track of the latest PS1 to revert it on zero return
-ps1_err="${BOLD_RED}✗${RESET} ${PS1}"
+ps1_err="\[${BOLD_RED}\]✗\[${RESET}\] ${PS1}"
 PROMPT_COMMAND='[[ "$(echo $?)" -ne 0 ]] && PS1="${ps1_err}" || PS1="${ps1_full}"'
 
 # customize PS2
 PS2=''
-PS2+="${YELLOW}(☞ﾟヮﾟ)☞"
-PS2+="${RESET} "
+PS2+="\[${YELLOW}\](☞ﾟヮﾟ)☞"
+PS2+="\[${RESET}\] "
 
 # customize PS3
 PS3=''
-PS3+="${MAGENTA}Select an option:"
-PS3+="${RESET} "
+PS3+="\[${MAGENTA}\]Select an option:"
+PS3+="\[${RESET}\] "
 
 # customize PS4
 PS4=''
-PS4+="${CYAN}\$0"
-PS4+="${RESET}:"
-PS4+="${GREEN}\${LINENO}"
-PS4+="${RESET}: "
+PS4+="\[${CYAN}\]\$0"
+PS4+="\[${RESET}\]:"
+PS4+="\[${GREEN}\]\${LINENO}"
+PS4+="\[${RESET}\]: "
 
 export PS1
 export PS2
