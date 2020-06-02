@@ -18,21 +18,27 @@ prompt_end() {
 }
 
 # customize PS2
+# use Zsh's version of prompt escape sequences to make prompt colors
+# reference: (http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html)
 PS2=''
-PS2+="\[${YELLOW}\](☞ﾟヮﾟ)☞"
-PS2+="\[${RESET}\] "
+PS2+="%{%F{yellow}%}(☞ﾟヮﾟ)☞"
+PS2+="%{%f%} "
 
 # customize PS3
+# use tput/ansi to be compatible with Bash scripts
+# PS3's value is not expanded like PS1, PS2, and PS4, so no escape wrap
+# reference: https://unix.stackexchange.com/a/439523
 PS3=''
-PS3+="\[${MAGENTA}\]Select an option:"
-PS3+="\[${RESET}\] "
+PS3+="${MAGENTA}Select an option:"
+PS3+="${RESET} "
 
 # customize PS4
+# use tput/ansi to be compatible with Bash scripts
 PS4=''
-PS4+="\[${CYAN}\]\$0"
-PS4+="\[${RESET}\]:"
-PS4+="\[${GREEN}\]\${LINENO}"
-PS4+="\[${RESET}\]: "
+PS4+="${BPE_CYAN}\$0"
+PS4+="${BPE_RESET}:"
+PS4+="${BPE_GREEN}\${LINENO}"
+PS4+="${BPE_RESET}: "
 
 export PS2
 export PS3

@@ -9,4 +9,6 @@ source ${HOME}/.bash/theme.bash
 source ${HOME}/.bash/prompt.bash
 source ${HOME}/.bash/functions.bash
 source ${HOME}/.bash/extras.bash
-[[ -f "${HOME}/.bash/private.bash" ]] && source ${HOME}/.bash/private.bash
+
+# if there's a private bash script, source it
+if [[ -f "${HOME}/.bash/private.bash" ]]; then source ${HOME}/.bash/private.bash; fi

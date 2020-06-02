@@ -9,4 +9,6 @@ source ${HOME}/.zsh/prompt.zsh
 source ${HOME}/.bash/aliases.bash
 source ${HOME}/.bash/functions.bash
 source ${HOME}/.bash/extras.bash
-[[ -f "${HOME}/.zsh/private.zsh" ]] && source ${HOME}/.zsh/private.zsh
+
+# if there's a private zsh script, source it
+if [[ -f "${HOME}/.zsh/private.zsh" ]]; then source ${HOME}/.zsh/private.zsh; fi

@@ -57,6 +57,31 @@ else
   RESET="\033[0m"
 fi
 
+# prompt-escape each color sequence with  \[  and  \]  to put them in prompt
+# without messing up the column counting in Bash
+# \[  and  \]  indicate the beginning and the end of a sequence of non-printing
+# characters
+BPE_BLACK="\[${BLACK}\]"
+BPE_RED="\[${RED}\]"
+BPE_GREEN="\[${GREEN}\]"
+BPE_YELLOW="\[${YELLOW}\]"
+BPE_BLUE="\[${BLUE}\]"
+BPE_MAGENTA="\[${MAGENTA}\]"
+BPE_CYAN="\[${CYAN}\]"
+BPE_WHITE="\[${WHITE}\]"
+
+BPE_BOLD="\[${BOLD}\]"
+BPE_BOLD_BLACK="\[${BOLD_BLACK}\]"
+BPE_BOLD_RED="\[${BOLD_RED}\]"
+BPE_BOLD_GREEN="\[${BOLD_GREEN}\]"
+BPE_BOLD_YELLOW="\[${BOLD_YELLOW}\]"
+BPE_BOLD_BLUE="\[${BOLD_BLUE}\]"
+BPE_BOLD_MAGENTA="\[${BOLD_MAGENTA}\]"
+BPE_BOLD_CYAN="\[${BOLD_CYAN}\]"
+BPE_BOLD_WHITE="\[${BOLD_WHITE}\]"
+
+BPE_RESET="\[${RESET}\]"
+
 # base16-shell from https://github.com/chriskempson/base16-shell
 # also generate ~/.vimrc_background for .vimrc to load
 BASE16_SHELL="${HOME}/.bash/base16-shell/"
