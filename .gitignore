@@ -1,3 +1,0 @@
-# Files containing private scripts that shall not be published
-bash/private.bash
-zsh/private.zsh

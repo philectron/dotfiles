@@ -1,21 +1,10 @@
-# system related
-export PATH="${HOME}/.local/bin:${PATH}"
-export PATH="${HOME}/bin:${PATH}"
-export PATH="${PATH}:."
+# Environment Settings
 
-# make python use UTF-8 encoding for output to stdin, stdout, stderr
-export PYTHONIOENCODING='UTF-8'
+export PATH="${PATH}:${HOME}/.local/bin:${HOME}/bin"
 
-# colored GCC warnings and errors;
-export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+# Java
+export JAVA_HOME='/usr/lib/jvm/java-21-openjdk-amd64'
 
-# ruby
-export GEM_HOME="${HOME}/gems"
-export PATH="${HOME}/gems/bin:${PATH}"
-
-# rust
-export PATH="${HOME}/.cargo/bin:${PATH}"
-
-# haskell
-[[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ]] && \
-  source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
+# SDKMAN
+export SDKMAN_DIR="${HOME}/.sdkman"
+[[ -s "${HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${HOME}/.sdkman/bin/sdkman-init.sh"

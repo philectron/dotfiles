@@ -1,32 +1,20 @@
-# extra and custom configurations
+# Extra Settings
 
-# make less more friendly for non-text input files, see lesspipe(1)
-[[ -x '/usr/bin/lesspipe' ]] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# disable Ctrl-S = hang terminal
-stty -ixon
-
-# set 755 as default permission (user: rwx, group: r-x, public: r-x)
-umask 0022
-
-########################################
-# Auto start SSH Agent and add keys
-########################################
-
-SSH_ENV=${HOME}/.ssh/agent.env
+# Auto-launch SSH Agent.
+ssh_agent_env="${HOME}/.ssh/agent.env"
 
 agent_load_env() {
-  [[ -f "${SSH_ENV}" ]] && source "${SSH_ENV}" > /dev/null
+  [[ -f "${ssh_agent_env}" ]] && source "${ssh_agent_env}" >| /dev/null
 }
 
 agent_start() {
-  ssh-agent > "${SSH_ENV}" && chmod 700 "${SSH_ENV}"
-  source "${SSH_ENV}" > /dev/null
+  (umask 077; ssh-agent >| "${ssh_agent_env}")
+  source "${ssh_agent_env}" >| /dev/null
 }
 
-# for now only works for  KEY  and  KEY.pub  pairs
+# Add KEY and KEY.pub pairs to agent.
 agent_add_keys() {
-  # find all  .pub  files in  ~/.ssh  directory
+  # Find all .pub files in SSH directory.
   local public_keys=()
   while read -r line; do
     line="${line##*/}"
@@ -35,7 +23,7 @@ agent_add_keys() {
   done < <("ls" "${HOME}"/.ssh/*.pub)
 
   for key in "${public_keys[@]}"; do
-    # ensure there exists a readable private key with the same name
+    # Ensure there exists a readable private key with the same name.
     if [[ -f "${HOME}"/.ssh/"${key}" ]]; then
       ssh-add "${HOME}"/.ssh/"${key}" 2> /dev/null
     fi
@@ -44,14 +32,13 @@ agent_add_keys() {
 
 agent_load_env
 
-# 0 = running with keys, 1 = running without keys, 2 = not running
-agent_run_state=$(ssh-add -l > /dev/null 2>&1; echo $?)
+# agent_run_state: 0=agent running w/ key; 1=agent w/o key; 2=agent not running
+agent_run_state="$(ssh-add -l >| /dev/null 2>&1; echo $?)"
 
-if [[ ! "${SSH_AUTH_SOCK}" || "${agent_run_state}" -eq 2 ]]; then
+if [[ -z "${SSH_AUTH_SOCK}" ]] || [[ ${agent_run_state} -eq 2 ]]; then
   agent_start && agent_add_keys
-else
+elif [[ -n "${SSH_AUTH_SOCK}" ]] && [[ ${agent_run_state} -eq 1 ]]; then
   agent_add_keys
 fi
 
-unset SSH_ENV
-unset agent_run_state
+unset ssh_agent_env

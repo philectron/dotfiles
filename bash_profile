@@ -1,9 +1,7 @@
-# if not running interactively, don't do anything
+# If not running interactively, don't do anything.
 [[ -z "${PS1}" ]] && return
 
-if [[ -f ${HOME}/.bashrc ]]; then
-  # inherit from .bashrc
-  source ${HOME}/.bashrc
-fi
+# Otherwise, load .bashrc if it exists.
+[[ -f ${HOME}/.bashrc ]] && source ${HOME}/.bashrc
 
-# stuff for login shell
+# Stuff for login shell below.

@@ -13,12 +13,9 @@
     ~/.gitconfig:
     ~/.gitignore_global:
     ~/.inputrc:
-    ~/.minttyrc:
     ~/.tmux.conf:
     ~/.vim:
     ~/.vimrc:
-    ~/.zsh:
-    ~/.zshrc:
 
 - shell:
   - [git submodule update --init --recursive, Installing submodules]

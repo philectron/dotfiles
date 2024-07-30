@@ -1,15 +1,10 @@
-" do not try to be compatible with vi
+" Do not try to be compatible with vi.
 set nocompatible
 
-" use mouse in terminal if available
-if has('mouse')
-  set mouse=a
-endif
-
-" enable filetype detection:
+" Enable filetype detection.
 filetype plugin indent on
 
-" remap <leader> key
+" Remap <leader> key.
 let mapleader = ','
 
 "===============================================================================
@@ -24,30 +19,30 @@ call pathogen#helptags()
 " Syntax
 "===============================================================================
 
-" turn on syntax highlighting
+" Turn on syntax highlighting.
 syntax on
 
 "===============================================================================
 " Appearance
 "===============================================================================
 
-" show matching braces when cursor is over them
+" Show matching braces when cursor is over them.
 set showmatch
 
-" don't wrap lines
+" Don't wrap lines.
 set nowrap
 
-" show aboslute line numbers
+" Show aboslute line numbers.
 set number
 
-" always show the current editing mode
+" Always show the current editing mode.
 set showmode
 
-" show ruler indicating column limits
-set colorcolumn=80,100,120,255
+" Show ruler indicating column limits.
+set colorcolumn=80,120,150
 highlight ColorColumn ctermbg=7 guibg=lightgrey
 
-" highlight current line
+" Highlight current line.
 set cursorline
 
 "===============================================================================
@@ -58,68 +53,68 @@ set cursorline
 " General
 "=======================================
 
-" allow backspacing over everything in insert mode
+" Allow backspacing over everything in insert mode.
 set backspace=indent,eol,start
 
-" incremental search (as string is being typed)
+" Incremental search (as string is being typed).
 set incsearch
 
-" highlight search
+" Highlight search.
 set hls
 
-" show current command
+" Show current command.
 set showcmd
 
-" show more history
+" Show more history.
 set history=8192
 
-" ignore case but not all-caps
+" Ignore case but not all-caps.
 set ignorecase
 set smartcase
 
-" move across wrapped line when softwrap is on, otherwise move normally
+" Move across wrapped line when softwrap is on, otherwise move normally.
 nnoremap <expr> j v:count ? 'j' : 'gj'
 nnoremap <expr> k v:count ? 'k' : 'gk'
 
-" ctrl + s will save
+" Ctrl + S will save.
 noremap <silent> <C-s> :update<CR>
 vnoremap <silent> <C-s> <C-c>:update<CR>
 inoremap <silent> <C-s> <C-o>:update<CR>
 
-" pressing F5 will remove all trailing whitespace
+" Pressing F5 will remove all trailing whitespace.
 nnoremap <F5> :let _s = @/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:noh<Bar><CR>
 
 "=======================================
 " Indentation
 "=======================================
 
-" always set auto-indenting on
+" Always set auto-indenting on.
 set autoindent
 
-" copy the previous indentation on auto-indenting
+" Copy the previous indentation on auto-indenting.
 set copyindent
 
-" on pressing tab, insert spaces
+" On pressing tab, insert spaces.
 set expandtab
 
-" when indenting with tab, use 4-space width
+" When indenting with tab, use 4-space width.
 set shiftwidth=4
 set smarttab
 
-" when hitting backspace, pretend like a tab is removed, even if spaces
+" When hitting backspace, pretend like a tab is removed, even if spaces.
 set softtabstop=4
 
-" a tab is 4 spaces
+" A tab is 4 spaces.
 set tabstop=4
 
 "=======================================
 " File-specific settings
 "=======================================
 
-" turn off auto-commenting
+" Turn off auto-commenting.
 autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
-" use // instead of /* */ for c-like language commenting
+" Use // instead of /* */ for c-like language commenting.
 autocmd FileType c,cpp,cs setlocal commentstring=//\ %s
 
 "=======================================
@@ -127,8 +122,8 @@ autocmd FileType c,cpp,cs setlocal commentstring=//\ %s
 " source: https://coderwall.com/p/if9mda/automatically-set-paste-mode-in-vim-when-pasting-in-insert-mode
 "=======================================
 
-" fallback toggle in case this trick doesn't work
-" usage: Toggle -> Paste -> Toggle
+" Fallback toggle in case this trick doesn't work.
+" Usage: Toggle -> Paste -> Toggle
 set pastetoggle=<F2>
 
 function! WrapForTmux(s)
@@ -157,11 +152,11 @@ inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 " Windows
 "===============================================================================
 
-" natural split opening
+" Natural split opening.
 set splitbelow
 set splitright
 
-" quicker split windows navigation
+" Quicker split windows navigation.
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
 nnoremap <C-l> <C-w><C-l>
@@ -191,10 +186,10 @@ endif
 "=======================================
 " indentLine
 "=======================================
-" enable this plugin on startup
+" Enable this plugin on startup.
 let g:indentLine_enabled = 1
 
-" character to show as indent guide
+" Character to show as indent guide.
 let g:indentLine_char = '│'
 
 "=======================================
@@ -203,11 +198,11 @@ let g:indentLine_char = '│'
 nnoremap <leader>n :NERDTreeToggle<Enter>
 nnoremap <leader>f :NERDTreeFind<Enter>
 
-" open NERDTree when vim starts up with no file specified
+" Open NERDTree when vim starts up with no file specified.
 autocmd StdinReadPre * let s:std_in = 1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
-" close Vim if NERDTree is the only thing still open
+" Close Vim if NERDTree is the only thing still open.
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "=======================================
@@ -238,31 +233,29 @@ let g:airline_theme = 'base16'
 "=======================================
 " Vim-Closetag
 "=======================================
-" filenames like *.xml, *.html, *.xhtml, ...
+" Filenames like *.xml, *.html, *.xhtml, ...
 " These are the file extensions where this plugin is enabled.
 let g:closetag_filenames = '*.cshtml,*.html,*.js,*.jsx,*.xhtml'
 
-" filenames like *.xml, *.xhtml, ...
-" This will make the list of non-closing tags self-closing in the specified
-" files.
+" Filenames like *.xml, *.xhtml, ...
+" This will make the list of non-closing tags self-closing in the specified files.
 let g:closetag_xhtml_filenames = '*.cshtml,*.html,*.js,*.jsx,*.xhtml'
 
-" integer value [0|1]
-" This will make the list of non-closing tags case-sensitive (e.g. `<Link>`
-" will be closed while `<link>` won't.)
+" Integer value [0|1]
+" This will make the list of non-closing tags case-sensitive (e.g. `<Link>` will be closed while `<link>` won't.).
 let g:closetag_emptyTags_caseSensitive = 1
 
-" Shortcut for closing tags, default is '>'
+" Shortcut for closing tags, default is '>'.
 let g:closetag_shortcut = '>'
 
-" Add > at current position without closing the current tag, default is ''
+" Add > at current position without closing the current tag, default is ''.
 let g:closetag_close_shortcut = '<leader>>'
 
 "===============================================================================
 " Local customization
 "===============================================================================
 
-" local customization in ~/.vimrc_local
+" Local customization in ~/.vimrc_local.
 let $LOCALFILE = expand('~/.vimrc_local')
 if filereadable($LOCALFILE)
   source $LOCALFILE

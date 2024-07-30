@@ -1,18 +1,16 @@
-# shorthand
-alias l='ls -F'
-alias la='ls -AF'
-alias ld='ls -d */'  # directories only
-alias lf="ls -AF | grep -v '^d'"  # files only
-# alias z='suspend'  # not using this
-alias c='clear'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
+# Shorthand Commands
 
-# default option for original command
-alias ls='ls -l -g --sort=time --group-directories-first --color=auto'
-alias dir='dir --color=auto'
-alias vdir='vdir --color=auto'
+# Set default options for original commands.
+if [[ "$(ostype)" == 'Linux' ]]; then
+  alias ls='ls -lg --classify --group-directories-first --human-readable --time-style=long-iso --color=auto'
+  alias dir='dir --classify --color=auto'
+  alias vdir='vdir --classify --color=auto'
+elif [[ "$(ostype)" == 'MacOS' ]]; then
+  alias ls='gls -lg --classify ---group-directories-first --color=auto'
+  alias dir='gdir --classify --color=auto'
+  alias vdir='gvdir --classify --color=auto'
+fi
+
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
@@ -20,23 +18,26 @@ alias cp='cp -i'
 alias rm='rm -i'
 alias mv='mv -i'
 
-# ps processes ran by ${USER}
-alias psme='ps -o ppid,pid,euser,stat,%cpu,rss,args | head -n 1; ps -eH -o ppid,pid,euser,stat,%cpu,rss,args | grep ${USER}'
-stty erase '^?'
+# Set shorthands for Eza if using (https://eza.rocks).
+if [[ -n "$(command -v eza)" ]]; then
+  alias l='eza --long --header --group-directories-first --smart-group --time-style=long-iso --classify=auto --color=auto'
+  alias lg='l --grid'      # as grid
+  alias la='l --all'       # list all, including hidden and 'dot' files
+  alias lga='la --grid'    # list all as grid
+  alias ld='l --only-dirs' # directories only
+  alias lt='l --tree'      # recurse into directories as a tree
+  alias ldt='ld --tree'    # directory-only tree
+else
+  alias l='ls'
+  alias la='l --almost-all'   # list all, including hidden and 'dot' files
+  alias ld='l --directory */' # directories only
+fi
 
-# add an "alert" alias for long running commands.
-# use like so: sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history | tail -n1 | sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+alias c='clear'
+alias ..='cd ../'
+alias ...='cd ../../'
+alias ....='cd ../../../'
+alias .....='cd ../../../../'
 
-# shorthand for a more detailed leak check valgrind
-alias valgrind='valgrind --leak-check=full --show-leak-kinds=all --track-origins=yes'
-
-# mount OSU Flip server to ~/flip/ quickly
-alias flip_mount='mkdir -p ${HOME}/flip/ && sshfs -o allow_other luuph@flip.engr.oregonstate.edu:/nfs/stak/users/luuph/ ${HOME}/flip/'
-alias flip_umount='sudo umount ${HOME}/flip/ && rm -rf ${HOME}/flip/'
-
-# ssh to OSU OS2 server quickly
-alias os2='ssh -A -t flip3 ssh -A os2'
-
-# shorthand for re-attaching IRC client
-alias irc='ssh flip3 -t tmux a -t weechat'
+# Use better ps format for processes ran by current user.
+alias psme='ps -o ppid,pid,user,stat,%cpu,rss,args | head -n 1; ps -e -o ppid,pid,user,stat,%cpu,rss,args | grep ${USER}'

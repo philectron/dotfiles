@@ -1,17 +1,17 @@
-# Sexy Bash Prompt, inspired by "Extravagant Zsh Prompt"
-# a big thanks to \amethyst on Freenode
-if [[ ${COLORTERM} = gnome-* && ${TERM} = xterm ]] \
-  && infocmp gnome-256color >/dev/null 2>&1; then
-  TERM=gnome-256color
+# Themes
+
+# Bash prompt inspired by "Extravagant Zsh Prompt".
+if [[ "${COLORTERM}" == 'gnome-'* && "${TERM}" == 'xterm' ]] &&
+  infocmp gnome-256color >/dev/null 2>&1; then
+  TERM='gnome-256color'
 fi
 
-# use the list of 256 Xterm colors. For reference:
+# Use the list of 256 Xterm colors. For reference:
 # https://jonasjacek.github.io/colors/
-# tput colors approximated from Tomorrow Night theme at
-# https://github.com/chriskempson/tomorrow-theme#tomorrow-night
 if tput setaf 1 &>/dev/null; then
   tput sgr0
 
+  # tput colors approximated from Tomorrow Night theme at https://github.com/chriskempson/tomorrow-theme#tomorrow-night.
   BLACK="$(tput setaf 0)"
   RED="$(tput setaf 1)"
   GREEN="$(tput setaf 2)"
@@ -21,8 +21,7 @@ if tput setaf 1 &>/dev/null; then
   CYAN="$(tput setaf 6)"
   WHITE="$(tput setaf 15)"
 
-  # ANSI escapes can't concatenate 'bold' and 'color', so
-  # define the bold colors here in case tput isn't available
+  # ANSI escapes can't concatenate 'bold' and 'color', so define the bold colors here in case tput isn't available.
   BOLD="$(tput bold)"
   BOLD_BLACK="${BOLD}${BLACK}"
   BOLD_RED="${BOLD}${RED}"
@@ -57,10 +56,8 @@ else
   RESET="\033[0m"
 fi
 
-# prompt-escape each color sequence with  \[  and  \]  to put them in prompt
-# without messing up the column counting in Bash
-# \[  and  \]  indicate the beginning and the end of a sequence of non-printing
-# characters
+# Prompt-escape each color sequence with \[ and \] to put them in prompt without messing up the column counting in Bash
+# \[ and \] indicate the beginning and the end of a sequence of non-printing characters.
 BPE_BLACK="\[${BLACK}\]"
 BPE_RED="\[${RED}\]"
 BPE_GREEN="\[${GREEN}\]"
@@ -83,11 +80,11 @@ BPE_BOLD_WHITE="\[${BOLD_WHITE}\]"
 BPE_RESET="\[${RESET}\]"
 
 # base16-shell from https://github.com/chriskempson/base16-shell
-# also generate ~/.vimrc_background for .vimrc to load
+# Also generate ~/.vimrc_background for .vimrc to load.
 BASE16_SHELL="${HOME}/.bash/base16-shell/"
 
-[[ -n "${PS1}" ]] && [[ -s "${BASE16_SHELL}/profile_helper.sh" ]] && \
+[[ -n "${PS1}" ]] && [[ -s "${BASE16_SHELL}/profile_helper.sh" ]] &&
   eval "$("${BASE16_SHELL}/profile_helper.sh")"
 
-# apply the theme if it has been previously applied
+# Apply the theme if it has been previously applied.
 [[ -f "${HOME}/.base16_theme" ]] && source "${HOME}/.base16_theme"
