@@ -1,6 +1,7 @@
 [user]
     email = philectron@users.noreply.github.com
     name = Phi Luu
+	signingkey = ~/.ssh/github.pub
 
 [core]
     excludesfile = ~/.gitignore_global
@@ -9,6 +10,12 @@
 
 [credential]
     helper = cache --timeout=3600
+
+[gpg]
+	format = ssh
+
+[commit]
+	gpgsign = true
 
 [push]
     default = simple
